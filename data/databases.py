@@ -1171,5 +1171,409 @@ TECHNOLOGIES = {
             "memory_safety": 7,
             "scalability": 10
         }
+    },
+
+    "neo4j": {
+        "name": "Neo4j",
+        "category": "database",
+        "year_created": 2007,
+        "creator": "Neo4j Inc (Emil Eifrem)",
+        "paradigm": ["Base de donnees graphe", "Cypher Query Language", "ACID"],
+        "typing": "Schema-flexible (typage de proprietes)",
+        "sections": {
+            "overview": (
+                "Neo4j est la base de donnees orientee graphe la plus populaire au\n"
+                "monde, concue pour stocker, interroger et manipuler des donnees\n"
+                "hautement connectees sous forme de noeuds, de relations et de\n"
+                "proprietes. Contrairement aux bases relationnelles qui utilisent\n"
+                "des jointures couteuses pour relier les tables, Neo4j stocke\n"
+                "nativement les relations comme des citoyens de premiere classe,\n"
+                "rendant la traversee de graphes extremement performante.\n\n"
+                "Neo4j utilise le langage de requete Cypher, un langage declaratif\n"
+                "specifiquement concu pour les graphes, dont la syntaxe visuelle\n"
+                "s'inspire de la representation ASCII-art des noeuds et des relations.\n"
+                "Cypher permet d'exprimer des requetes de traversee complexes de\n"
+                "maniere intuitive et lisible.\n\n"
+                "Le modele de donnees de Neo4j repose sur le Property Graph Model :\n"
+                "les noeuds representent des entites, les relations connectent les\n"
+                "noeuds de maniere directionnelle, et les deux peuvent porter des\n"
+                "proprietes cle-valeur. Ce modele est ideal pour representer des\n"
+                "reseaux sociaux, des systemes de recommandation, des graphes de\n"
+                "connaissances ou des topologies de reseaux.\n\n"
+                "Neo4j offre des garanties ACID completes, un systeme de clustering\n"
+                "pour la haute disponibilite et la scalabilite en lecture, ainsi\n"
+                "qu'un ecosysteme riche incluant des algorithmes de graphes integres\n"
+                "(centralite, communaute, similarite, plus court chemin) via la\n"
+                "bibliotheque Graph Data Science (GDS)."
+            ),
+            "history": (
+                "Neo4j trouve ses origines en 2000, quand Emil Eifrem, Johan Svensson\n"
+                "et Peter Neubauer, travaillant sur un systeme de gestion de contenu\n"
+                "en Suede, ont realise que les bases relationnelles etaient inadaptees\n"
+                "pour modeliser et traverser des structures de donnees hautement\n"
+                "connectees. Ils ont alors commence a developper un moteur de stockage\n"
+                "natif oriente graphe.\n\n"
+                "La premiere version publique de Neo4j est sortie en 2007, faisant\n"
+                "de Neo4j l'une des premieres bases de donnees graphe disponibles.\n"
+                "L'entreprise Neo Technology (renommee Neo4j Inc par la suite) a ete\n"
+                "fondee pour developper et commercialiser le produit.\n\n"
+                "En 2011, Neo4j a introduit le langage Cypher, qui est rapidement\n"
+                "devenu le standard de facto pour les requetes de graphes. Cypher a\n"
+                "ensuite ete propose comme standard ouvert via le projet openCypher.\n\n"
+                "Neo4j 2.0 (2013) a apporte les labels pour les noeuds et les index\n"
+                "automatiques. Neo4j 3.0 (2016) a introduit les procedures stockees\n"
+                "et le clustering causal pour la haute disponibilite.\n\n"
+                "Neo4j 4.0 (2020) a ete une version majeure avec le support multi-base\n"
+                "de donnees, le sharding par fabric, et les ameliorations reactives.\n"
+                "Neo4j 5.0 (2022) a continue avec des optimisations de performances\n"
+                "du planificateur de requetes et une architecture de clustering\n"
+                "simplifiee.\n\n"
+                "En 2023-2024, Neo4j a integre des capacites de recherche vectorielle\n"
+                "pour le Retrieval-Augmented Generation (RAG), combinant la puissance\n"
+                "des graphes de connaissances avec l'intelligence artificielle\n"
+                "generative."
+            ),
+            "architecture": (
+                "L'architecture de Neo4j est concue autour de la traversee native\n"
+                "de graphes, offrant des performances constantes independamment de\n"
+                "la taille totale du graphe :\n\n"
+                "Stockage natif de graphes : Neo4j utilise un format de stockage\n"
+                "specifiquement optimise pour les graphes. Les noeuds et les\n"
+                "relations sont stockes dans des fichiers separes avec des\n"
+                "pointeurs directs entre eux. Chaque noeud pointe directement\n"
+                "vers sa premiere relation, et chaque relation pointe vers les\n"
+                "relations suivantes, formant des listes chainees.\n\n"
+                "Traversee a index-free adjacency : Contrairement aux bases\n"
+                "relationnelles qui necessitent des jointures via des index, Neo4j\n"
+                "suit directement les pointeurs en memoire pour passer d'un noeud\n"
+                "a ses voisins. Le cout d'une traversee est proportionnel au\n"
+                "nombre de relations parcourues, pas a la taille totale du graphe.\n\n"
+                "Gestion memoire : Neo4j utilise un cache de pages pour garder les\n"
+                "parties frequemment accedees du graphe en memoire. Le dimensionnement\n"
+                "de la heap JVM et du page cache est crucial pour les performances.\n\n"
+                "Transactions ACID : Neo4j garantit l'atomicite, la coherence,\n"
+                "l'isolation et la durabilite de chaque transaction. Les ecritures\n"
+                "sont d'abord journalisees dans un transaction log, puis appliquees\n"
+                "au store.\n\n"
+                "Clustering causal : En mode cluster, Neo4j utilise le protocole\n"
+                "Raft pour la replication. Un noeud leader traite les ecritures et\n"
+                "les replique sur les followers. Les repliques en lecture (read\n"
+                "replicas) permettent de scaler les lectures horizontalement.\n\n"
+                "Graph Data Science : La bibliotheque GDS execute les algorithmes\n"
+                "de graphes sur une projection in-memory du graphe, permettant\n"
+                "des analyses performantes sans impacter la base transactionnelle."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Traversee de graphes extremement rapide grace au stockage natif et a l'index-free adjacency",
+                    "Langage Cypher intuitif et expressif pour les requetes de graphes complexes",
+                    "Transactions ACID completes, rare pour une base NoSQL",
+                    "Bibliotheque Graph Data Science integree avec plus de 60 algorithmes",
+                    "Visualisation native des graphes facilitant l'exploration des donnees",
+                    "Ideal pour les donnees hautement connectees (reseaux, recommandations, fraude)",
+                    "Support de la recherche vectorielle pour les cas d'usage IA/RAG"
+                ],
+                "cons": [
+                    "La scalabilite horizontale en ecriture est limitee (leader unique)",
+                    "Consommation memoire elevee pour les grands graphes (heap JVM + page cache)",
+                    "La licence Community Edition est limitee ; les fonctionnalites avancees necessitent l'Enterprise Edition payante",
+                    "Moins performant que les bases relationnelles pour les requetes agregatives massives",
+                    "La modelisation en graphe necessite un changement de paradigme pour les developpeurs SQL",
+                    "L'import de gros volumes de donnees peut etre lent sans l'outil neo4j-admin import"
+                ]
+            },
+            "use_cases": (
+                "Neo4j excelle dans les cas d'usage impliquant des donnees\n"
+                "fortement connectees : reseaux sociaux et analyse d'influence,\n"
+                "moteurs de recommandation (produits, contenu, amis), detection\n"
+                "de fraude et anti-blanchiment (patterns de transactions suspectes),\n"
+                "graphes de connaissances et ontologies, gestion des identites et\n"
+                "des acces (IAM), analyse d'impact et de dependances (IT, reseaux),\n"
+                "et plus recemment le Retrieval-Augmented Generation (RAG) combinant\n"
+                "graphes de connaissances et IA generative."
+            ),
+            "ecosystem_size": (
+                "L'ecosysteme Neo4j comprend des outils officiels et communautaires.\n"
+                "Neo4j Browser et Neo4j Bloom pour la visualisation et l'exploration.\n"
+                "Neo4j Desktop comme environnement de developpement local.\n"
+                "Graph Data Science (GDS) pour les algorithmes de graphes avances.\n"
+                "Neo4j Aura comme service cloud manage. APOC (Awesome Procedures on\n"
+                "Cypher) une bibliotheque de plus de 450 procedures utilitaires.\n"
+                "Drivers officiels pour Java, Python, JavaScript, .NET et Go.\n"
+                "Connecteurs Spark et Kafka pour l'integration big data.\n"
+                "Neodash pour la creation de tableaux de bord."
+            ),
+            "companies": [
+                "NASA",
+                "UBS",
+                "Volvo",
+                "eBay",
+                "Airbus",
+                "Comcast",
+                "Adobe",
+                "Cisco"
+            ],
+            "code_example": (
+                "// Creer des noeuds et des relations dans le graphe\n"
+                "CREATE (alice:Personne {nom: 'Alice', age: 30, ville: 'Paris'})\n"
+                "CREATE (bob:Personne {nom: 'Bob', age: 28, ville: 'Lyon'})\n"
+                "CREATE (neo4j:Technologie {nom: 'Neo4j', type: 'Base de donnees'})\n"
+                "CREATE (alice)-[:CONNAIT {depuis: 2020}]->(bob)\n"
+                "CREATE (alice)-[:UTILISE {niveau: 'expert'}]->(neo4j)\n"
+                "CREATE (bob)-[:UTILISE {niveau: 'intermediaire'}]->(neo4j);\n\n"
+                "// Trouver les amis d'amis qui utilisent la meme technologie\n"
+                "MATCH (p:Personne {nom: 'Alice'})-[:CONNAIT*1..3]-(ami)\n"
+                "MATCH (ami)-[:UTILISE]->(tech:Technologie)\n"
+                "WHERE tech.nom = 'Neo4j' AND ami <> p\n"
+                "RETURN ami.nom, ami.ville, COUNT(*) AS connexions\n"
+                "ORDER BY connexions DESC;\n\n"
+                "// Trouver le plus court chemin entre deux personnes\n"
+                "MATCH chemin = shortestPath(\n"
+                "    (a:Personne {nom: 'Alice'})-[:CONNAIT*]-(b:Personne {nom: 'Bob'})\n"
+                ")\n"
+                "RETURN chemin, length(chemin) AS distance;"
+            ),
+            "performance": {
+                "startup_time": "Le demarrage prend entre 10 et 30 secondes selon la taille de la base. Le temps de chauffe du page cache depend du volume de donnees a charger en memoire.",
+                "throughput": "Traversees de graphes extremement rapides : millions de sauts par seconde. Les requetes de traversee restent performantes meme sur des graphes de milliards de noeuds. Les ecritures transactionnelles atteignent des dizaines de milliers par seconde.",
+                "memory": "La performance depend fortement de la memoire disponible. Le page cache doit idealement couvrir la totalite du graphe. La heap JVM est utilisee pour les transactions et le traitement des requetes. Prevoir 16 a 64 Go de RAM pour les installations de production.",
+                "concurrency_model": "Modele transactionnel avec verrous optimistes en lecture et verrouillage au niveau des noeuds et relations en ecriture. Le clustering causal permet de distribuer les lectures sur plusieurs instances."
+            },
+            "learning_curve": (
+                "La courbe d'apprentissage de Neo4j est moderee. Cypher est\n"
+                "un langage intuitif dont la syntaxe visuelle facilite la prise\n"
+                "en main. Cependant, la modelisation en graphe necessite un\n"
+                "changement de mentalite par rapport au relationnel. Il faut\n"
+                "apprendre a penser en termes de noeuds, relations et traversees\n"
+                "plutot qu'en tables et jointures. Les developpeurs provenant\n"
+                "du monde SQL doivent investir du temps pour maitriser les\n"
+                "patterns de modelisation graphe."
+            ),
+            "community_size": "Communaute active de plusieurs centaines de milliers de developpeurs. Conferences annuelles (NODES). Forums communautaires actifs. Documentation officielle complete avec des cours gratuits sur GraphAcademy.",
+            "job_market": "Marche de niche mais en croissance. Les postes mentionnant Neo4j sont souvent specialises (data science, detection de fraude, graphes de connaissances) et offrent des salaires attractifs."
+        },
+        "traits": {
+            "performance": 7,
+            "developer_speed": 7,
+            "learning_curve": 5,
+            "ecosystem_size": 5,
+            "type_safety": 5,
+            "concurrency": 6,
+            "memory_safety": 7,
+            "scalability": 6
+        }
+    },
+
+    "elasticsearch": {
+        "name": "Elasticsearch",
+        "category": "database",
+        "year_created": 2010,
+        "creator": "Shay Banon (Elastic)",
+        "paradigm": ["Moteur de recherche", "Document store", "RESTful"],
+        "typing": "Schema dynamique (mapping)",
+        "sections": {
+            "overview": (
+                "Elasticsearch est un moteur de recherche et d'analyse distribue,\n"
+                "open source, construit sur Apache Lucene. Il permet de stocker,\n"
+                "rechercher et analyser de grands volumes de donnees en temps quasi\n"
+                "reel. Son API RESTful et son format JSON natif en font un outil\n"
+                "accessible et facilement integrable dans toute architecture moderne.\n\n"
+                "Au coeur d'Elasticsearch se trouve l'index inverse (inverted index),\n"
+                "une structure de donnees heritee de Lucene qui associe chaque terme\n"
+                "aux documents qui le contiennent. Cette approche permet des recherches\n"
+                "plein texte extremement rapides, meme sur des milliards de documents.\n\n"
+                "Elasticsearch va bien au-dela de la simple recherche textuelle. Il\n"
+                "offre des capacites d'agregation puissantes pour l'analyse de donnees,\n"
+                "la recherche geospatiale, l'auto-completion, la suggestion de termes,\n"
+                "le scoring de pertinence personnalisable, et la recherche vectorielle\n"
+                "pour les cas d'usage d'intelligence artificielle.\n\n"
+                "Concu des le depart pour etre distribue, Elasticsearch repartit\n"
+                "automatiquement les donnees et les requetes sur plusieurs noeuds,\n"
+                "offrant une scalabilite horizontale quasi lineaire. Son architecture\n"
+                "de sharding et de replication assure a la fois la performance et\n"
+                "la resilience aux pannes.\n\n"
+                "Elasticsearch est le composant central de la Elastic Stack (anciennement\n"
+                "ELK Stack) qui comprend Logstash pour l'ingestion, Kibana pour la\n"
+                "visualisation, et Beats pour la collecte legere de donnees."
+            ),
+            "history": (
+                "Elasticsearch a ete cree par Shay Banon en 2010. Avant cela, Banon\n"
+                "avait developpe Compass, un framework de recherche Java base sur\n"
+                "Lucene. Realisant les limites de Compass pour les systemes distribues,\n"
+                "il a decide de repartir de zero pour creer un moteur de recherche\n"
+                "distribue natif, exploitant pleinement les capacites de Lucene.\n\n"
+                "La premiere version publique d'Elasticsearch a ete publiee en\n"
+                "fevrier 2010. Le projet a immediatement attire l'attention grace\n"
+                "a sa simplicite d'utilisation, son API REST intuitive et sa capacite\n"
+                "a scaler horizontalement sans configuration complexe.\n\n"
+                "En 2012, la societe Elasticsearch BV a ete fondee (renommee Elastic\n"
+                "en 2015). L'entreprise a developpe un modele commercial autour de\n"
+                "l'open source, offrant des fonctionnalites premium et du support.\n\n"
+                "La stack ELK (Elasticsearch, Logstash, Kibana) est devenue un\n"
+                "standard de facto pour la gestion des logs et l'observabilite.\n"
+                "L'ajout de Beats en 2015 a complete la stack pour la collecte\n"
+                "legere de donnees.\n\n"
+                "Elastic est entree en bourse au NYSE en 2018 sous le ticker ESTC.\n"
+                "En 2021, Elastic a change la licence d'Elasticsearch de Apache 2.0\n"
+                "vers SSPL et Elastic License, provoquant la creation du fork\n"
+                "OpenSearch par Amazon.\n\n"
+                "En 2024, Elastic a annonce le retour a une licence open source\n"
+                "(AGPL) pour Elasticsearch, apaisant les tensions avec la communaute.\n"
+                "Elasticsearch continue d'evoluer avec l'integration de la recherche\n"
+                "vectorielle et des fonctionnalites d'IA generative (ESRE, Elastic\n"
+                "AI Assistant)."
+            ),
+            "architecture": (
+                "L'architecture d'Elasticsearch est fondamentalement distribuee,\n"
+                "concue pour scaler horizontalement tout en restant simple\n"
+                "d'utilisation :\n\n"
+                "Index inverse (Inverted Index) : Le coeur de la recherche repose\n"
+                "sur Lucene et ses index inverses. Chaque champ indexe possede son\n"
+                "propre index inverse qui mappe chaque terme unique vers la liste\n"
+                "des documents le contenant, avec la position et la frequence.\n"
+                "Cette structure permet des recherches en O(1) par terme.\n\n"
+                "Sharding : Chaque index Elasticsearch est divise en shards\n"
+                "(fragments), chacun etant un index Lucene independant. Les shards\n"
+                "sont distribues sur les noeuds du cluster. Le nombre de shards\n"
+                "primaires est defini a la creation de l'index et determine la\n"
+                "capacite de parallelisation.\n\n"
+                "Replication : Chaque shard primaire possede zero ou plusieurs\n"
+                "replicas distribues sur d'autres noeuds. Les replicas servent\n"
+                "a la fois pour la tolerance aux pannes et pour distribuer la\n"
+                "charge de lecture. En cas de perte d'un noeud, un replica est\n"
+                "promu en shard primaire.\n\n"
+                "Routage de requetes : Les requetes de recherche sont envoyees\n"
+                "a un noeud coordinateur qui les distribue a tous les shards\n"
+                "concernes (phase scatter), collecte les resultats partiels et\n"
+                "les fusionne (phase gather) avant de retourner la reponse.\n\n"
+                "Analyseurs de texte : Elasticsearch decompose le texte via\n"
+                "des analyseurs configurables (character filters, tokenizer,\n"
+                "token filters) pour normaliser et indexer les termes. Les\n"
+                "analyseurs multilingues supportent les specificites de chaque\n"
+                "langue (stemming, stop words).\n\n"
+                "Segments Lucene : Les donnees sont ecrites dans des segments\n"
+                "immuables. Les mises a jour et suppressions sont marquees puis\n"
+                "nettoyees lors du merge de segments. Le refresh (par defaut\n"
+                "chaque seconde) rend les nouveaux documents cherchables."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Recherche plein texte extremement rapide et pertinente grace a Lucene",
+                    "Scalabilite horizontale quasi lineaire via le sharding automatique",
+                    "API RESTful intuitive en JSON, facile a integrer dans toute architecture",
+                    "Agregations puissantes pour l'analyse de donnees en temps reel",
+                    "Elastic Stack complete (Kibana, Logstash, Beats) pour l'observabilite",
+                    "Recherche quasi temps reel : les documents sont cherchables en moins d'une seconde",
+                    "Support natif de la recherche geospatiale, vectorielle et multilingue"
+                ],
+                "cons": [
+                    "Consommation de ressources elevee (memoire, CPU, disque) due a l'indexation intensive",
+                    "Pas de transactions ACID ni de jointures relationnelles : inadapte comme base de donnees primaire",
+                    "La gestion du mapping et du reindexing peut etre complexe en production",
+                    "Le split brain peut survenir si le cluster est mal configure (nombre de noeuds maitres)",
+                    "La licence a connu des changements controverses (Apache 2.0 vers SSPL puis AGPL)",
+                    "La mise a jour de documents existants est couteuse (reindexation complete du document)"
+                ]
+            },
+            "use_cases": (
+                "Elasticsearch est le choix de reference pour la recherche plein\n"
+                "texte dans les applications web et mobiles, l'agregation de logs\n"
+                "et l'observabilite (ELK/Elastic Stack), le monitoring d'infrastructure\n"
+                "et d'applications (APM), l'analyse de donnees en temps reel et les\n"
+                "tableaux de bord, la recherche e-commerce avec facettes et filtres,\n"
+                "la detection d'anomalies et l'analyse de securite (SIEM), ainsi que\n"
+                "la recherche vectorielle pour les applications d'IA generative et\n"
+                "de RAG."
+            ),
+            "ecosystem_size": (
+                "L'ecosysteme Elastic est l'un des plus riches du monde de la\n"
+                "recherche et de l'observabilite. Kibana pour la visualisation et\n"
+                "les tableaux de bord. Logstash pour l'ingestion et la transformation\n"
+                "de donnees. Beats (Filebeat, Metricbeat, Heartbeat, etc.) pour la\n"
+                "collecte legere. Elastic Agent pour la gestion unifiee. Elastic APM\n"
+                "pour le monitoring applicatif. Elastic Security (SIEM) pour la\n"
+                "securite. Clients officiels pour Java, Python, JavaScript, Go, Ruby,\n"
+                "PHP et .NET. Elastic Cloud comme service manage. Connecteurs pour\n"
+                "Hadoop, Spark, Kafka et les principales bases de donnees."
+            ),
+            "companies": [
+                "Netflix",
+                "Uber",
+                "Slack",
+                "Spotify",
+                "eBay",
+                "Wikipedia/Wikimedia",
+                "GitHub",
+                "Adobe"
+            ],
+            "code_example": (
+                "# Creer un index avec un mapping personnalise\n"
+                "PUT /produits\n"
+                "{\n"
+                "  \"mappings\": {\n"
+                "    \"properties\": {\n"
+                "      \"nom\":         {\"type\": \"text\", \"analyzer\": \"french\"},\n"
+                "      \"description\": {\"type\": \"text\", \"analyzer\": \"french\"},\n"
+                "      \"prix\":        {\"type\": \"float\"},\n"
+                "      \"categorie\":   {\"type\": \"keyword\"},\n"
+                "      \"en_stock\":    {\"type\": \"boolean\"},\n"
+                "      \"date_ajout\":  {\"type\": \"date\"}\n"
+                "    }\n"
+                "  }\n"
+                "}\n\n"
+                "# Indexer un document\n"
+                "POST /produits/_doc\n"
+                "{\n"
+                "  \"nom\": \"Clavier mecanique RGB\",\n"
+                "  \"description\": \"Clavier mecanique avec switches Cherry MX\",\n"
+                "  \"prix\": 129.99,\n"
+                "  \"categorie\": \"peripheriques\",\n"
+                "  \"en_stock\": true,\n"
+                "  \"date_ajout\": \"2025-01-15\"\n"
+                "}\n\n"
+                "# Recherche plein texte avec agregation\n"
+                "GET /produits/_search\n"
+                "{\n"
+                "  \"query\": {\n"
+                "    \"bool\": {\n"
+                "      \"must\": [{\"match\": {\"description\": \"clavier mecanique\"}}],\n"
+                "      \"filter\": [{\"range\": {\"prix\": {\"lte\": 200}}}]\n"
+                "    }\n"
+                "  },\n"
+                "  \"aggs\": {\n"
+                "    \"par_categorie\": {\"terms\": {\"field\": \"categorie\"}},\n"
+                "    \"prix_moyen\":    {\"avg\": {\"field\": \"prix\"}}\n"
+                "  }\n"
+                "}"
+            ),
+            "performance": {
+                "startup_time": "Le demarrage d'un noeud prend entre 10 et 60 secondes selon le nombre d'index et de shards. La recuperation du cluster apres un redemarrage complet peut prendre plusieurs minutes (allocation des shards).",
+                "throughput": "Recherches extremement rapides : des milliers de requetes par seconde avec des temps de reponse en millisecondes. L'indexation peut atteindre des dizaines de milliers de documents par seconde par noeud.",
+                "memory": "Forte consommation memoire : la heap JVM (generalement 50% de la RAM, maximum 32 Go) est utilisee pour les structures internes et les caches. Le systeme de fichiers utilise le reste pour le cache des segments Lucene.",
+                "concurrency_model": "Architecture multi-threadee basee sur Netty pour les I/O non bloquantes. Les requetes de recherche sont parallelisees sur les shards. Le coordinateur fusionne les resultats de maniere asynchrone. Le refresh periodique rend les documents cherchables en quasi temps reel."
+            },
+            "learning_curve": (
+                "La courbe d'apprentissage d'Elasticsearch est moderee a elevee.\n"
+                "L'API REST et les requetes JSON simples sont faciles a prendre\n"
+                "en main. Cependant, la maitrise du Query DSL complet, des\n"
+                "analyseurs de texte, du mapping, du tuning des shards et de\n"
+                "la gestion d'un cluster de production demande un investissement\n"
+                "significatif. La comprehension des scores de pertinence (BM25,\n"
+                "boosting) et des agregations complexes necessite une expertise\n"
+                "approfondie."
+            ),
+            "community_size": "Communaute tres large et active. Conferences annuelles (ElasticON). Forums Discuss actifs avec des milliers de sujets. Documentation officielle exhaustive. Nombreux plugins et integrations communautaires.",
+            "job_market": "Forte demande sur le marche de l'emploi. Les competences Elasticsearch sont recherchees pour les postes DevOps, SRE, ingenieur de donnees et ingenieur de recherche. La maitrise de la Elastic Stack est un atout majeur."
+        },
+        "traits": {
+            "performance": 8,
+            "developer_speed": 7,
+            "learning_curve": 5,
+            "ecosystem_size": 7,
+            "type_safety": 4,
+            "concurrency": 8,
+            "memory_safety": 6,
+            "scalability": 9
+        }
     }
 }

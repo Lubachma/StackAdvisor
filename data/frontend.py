@@ -1619,4 +1619,569 @@ TECHNOLOGIES = {
             "scalability": 8,
         },
     },
+
+    "astro": {
+        "name": "Astro",
+        "category": "frontend",
+        "year_created": 2021,
+        "creator": "Fred K. Schott",
+        "paradigm": ["Island Architecture", "Multi-framework", "Content-first"],
+        "typing": "JavaScript/TypeScript",
+        "sections": {
+            "overview": (
+                "Astro est un framework web moderne concu pour creer des sites web orientes "
+                "contenu, rapides par defaut. Lance en 2021 par Fred K. Schott et l'equipe "
+                "derriere le bundler Snowpack, Astro se distingue par son approche radicalement "
+                "differente du rendu : par defaut, il genere du HTML statique pur sans aucun "
+                "JavaScript cote client. Cette philosophie, appelee 'Zero JS by default', "
+                "permet d'obtenir des scores de performance exceptionnels sur des outils comme "
+                "Lighthouse, avec des temps de chargement extremement rapides.\n\n"
+                "Le concept central d'Astro est l'Island Architecture (architecture en ilots). "
+                "Plutot que d'hydrater l'ensemble de la page en une seule application JavaScript "
+                "monolithique, Astro permet de definir des 'ilots' interactifs independants au "
+                "sein d'une page autrement statique. Chaque ilot peut etre hydrate selon une "
+                "strategie specifique : au chargement de la page (client:load), lorsqu'il "
+                "devient visible dans le viewport (client:visible), lorsque le navigateur est "
+                "inactif (client:idle), ou uniquement sur un evenement media query (client:media). "
+                "Cette granularite permet un controle precis du JavaScript envoye au navigateur.\n\n"
+                "L'un des atouts les plus distinctifs d'Astro est son support multi-framework. "
+                "Un meme projet Astro peut integrer des composants React, Vue, Svelte, SolidJS, "
+                "Preact, Lit ou Alpine.js, chacun fonctionnant comme un ilot independant. Cette "
+                "flexibilite est particulierement precieuse pour les equipes qui souhaitent "
+                "migrer progressivement d'un framework a un autre, ou qui veulent utiliser le "
+                "meilleur outil pour chaque partie de leur interface. Le systeme de templates "
+                "d'Astro utilise une syntaxe propre (.astro) qui ressemble a du HTML enrichi "
+                "avec des expressions JavaScript, offrant une prise en main rapide pour les "
+                "developpeurs familiers avec le HTML et JSX. Avec sa collection de contenus "
+                "type-safe, son support natif de Markdown et MDX, et ses integrations pour les "
+                "CMS headless, Astro s'est impose comme le choix de reference pour les sites "
+                "de contenu performants."
+            ),
+            "history": (
+                "L'histoire d'Astro commence avec Snowpack, un outil de build JavaScript "
+                "cree par Fred K. Schott qui exploitait les modules ES natifs du navigateur "
+                "pour accelerer le developpement. Fort de cette experience, Schott et son "
+                "equipe ont imagine un framework qui repenserait fondamentalement la maniere "
+                "dont les sites web sont construits et livres au navigateur.\n\n"
+                "Astro a ete annonce publiquement en mars 2021 et a immediatement suscite "
+                "un vif interet dans la communaute JavaScript. La version 0.x a pose les "
+                "bases de l'Island Architecture et du support multi-framework. Astro 1.0 "
+                "est sorti en aout 2022, marquant la premiere version stable du framework "
+                "avec un engagement de stabilite de l'API. Astro 2.0 (janvier 2023) a "
+                "introduit les Content Collections, un systeme type-safe pour gerer le "
+                "contenu Markdown et MDX, revolutionnant la maniere de structurer les "
+                "sites de contenu. Astro 3.0 (aout 2023) a apporte View Transitions, "
+                "permettant des animations de navigation fluides entre les pages sans "
+                "JavaScript supplementaire significatif. Astro 4.0 (decembre 2023) a "
+                "ameliore la barre d'outils de developpement, les routes internationalisees "
+                "et l'API de journalisation. Astro 5.0 (2024) a introduit la couche de "
+                "contenu, les Server Islands et des ameliorations de performance "
+                "significatives. Le framework continue d'evoluer rapidement tout en "
+                "maintenant sa philosophie centrale : livrer moins de JavaScript au "
+                "navigateur pour des sites plus rapides."
+            ),
+            "architecture": (
+                "L'architecture d'Astro repose sur le concept fondamental d'Island "
+                "Architecture, une approche qui represente un changement de paradigme dans "
+                "la construction de sites web. Contrairement aux frameworks SPA traditionnels "
+                "qui hydratent la page entiere en une seule application JavaScript, Astro "
+                "decoupe l'interface en regions independantes appelees 'ilots' (islands). "
+                "Chaque ilot est un composant interactif autonome entoure de HTML statique. "
+                "Le serveur genere l'integralite du HTML de la page, et seuls les ilots "
+                "necessitant de l'interactivite recoivent du JavaScript.\n\n"
+                "Le processus de build d'Astro est en deux phases. D'abord, le framework "
+                "compile les fichiers .astro, Markdown et MDX en HTML statique. Les "
+                "composants de framework (React, Vue, Svelte, etc.) sont rendus cote "
+                "serveur pour produire leur HTML. Ensuite, pour les ilots marques avec "
+                "une directive client:*, Astro genere des bundles JavaScript individuels "
+                "qui seront charges et hydrateront ces composants specifiques cote client.\n\n"
+                "Astro utilise Vite comme moteur de build sous-jacent, beneficiant de son "
+                "rechargement a chaud ultra-rapide en developpement et de son bundling "
+                "optimise en production. Le systeme de routage est base sur les fichiers : "
+                "chaque fichier dans le dossier src/pages correspond a une route. Astro "
+                "supporte plusieurs modes de sortie : statique (par defaut, generation de "
+                "fichiers HTML), serveur (rendu a la demande avec SSR), et hybride (combinaison "
+                "des deux). Le moteur de rendu est concu pour etre extensible via un systeme "
+                "d'integrations qui permettent d'ajouter des frameworks UI, des outils CSS, "
+                "des adaptateurs de deploiement et d'autres fonctionnalites."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Performance exceptionnelle par defaut grace au zero JavaScript cote client",
+                    "Island Architecture permettant un controle precis de l'hydratation",
+                    "Support multi-framework unique : React, Vue, Svelte, Solid, etc. dans un meme projet",
+                    "Excellent support du contenu avec Markdown, MDX et Content Collections type-safe",
+                    "View Transitions integrees pour des navigations fluides entre pages",
+                    "Courbe d'apprentissage douce grace a une syntaxe proche du HTML standard",
+                    "Ecosysteme d'integrations riche et croissant avec plus de 500 themes et plugins",
+                    "SEO optimal grace au rendu statique complet du HTML",
+                ],
+                "cons": [
+                    "Moins adapte aux applications hautement interactives de type SPA complexe",
+                    "L'ecosysteme est encore jeune compare a React ou Vue, certains outils manquent",
+                    "Le modele mental de l'Island Architecture peut derouter les developpeurs habitues aux SPA",
+                    "Le partage d'etat entre ilots de frameworks differents peut etre complexe",
+                    "Le mode SSR est moins mature que celui de Next.js ou Nuxt",
+                    "Les applications temps reel avec de nombreuses mises a jour d'etat ne sont pas le cas d'usage ideal",
+                ],
+            },
+            "use_cases": (
+                "Astro excelle dans la creation de sites web orientes contenu ou la performance "
+                "et le SEO sont des priorites absolues. Les blogs, sites de documentation, "
+                "portfolios et sites marketing sont les cas d'utilisation les plus naturels du "
+                "framework. Les sites e-commerce a catalogue, les pages d'atterrissage et les "
+                "sites institutionnels beneficient enormement de la generation statique d'Astro "
+                "combinee a des ilots interactifs pour les paniers d'achat ou les formulaires.\n\n"
+                "Les sites de documentation technique sont un autre cas d'utilisation phare, "
+                "avec le theme Starlight qui offre une solution cle en main pour creer des "
+                "documentations performantes et accessibles. Les sites de presse et les magazines "
+                "en ligne, qui privilegient le temps de chargement et le referencement, sont "
+                "egalement des candidats ideaux. Les equipes qui souhaitent migrer progressivement "
+                "d'un framework a un autre trouvent dans Astro un outil de transition puissant "
+                "grace au support multi-framework."
+            ),
+            "ecosystem": (
+                "L'ecosysteme d'Astro croit rapidement et s'articule autour de plusieurs axes. "
+                "Le systeme d'integrations officielles couvre les principaux frameworks UI "
+                "(React, Vue, Svelte, Solid, Preact, Lit, Alpine.js), les outils CSS (Tailwind "
+                "CSS, UnoCSS), les optimisateurs d'images (@astrojs/image) et les adaptateurs "
+                "de deploiement (Vercel, Netlify, Cloudflare, Node, Deno).\n\n"
+                "Starlight est le theme de documentation officiel d'Astro, devenu une reference "
+                "dans le domaine des sites de documentation statiques. Le catalogue Astro "
+                "propose plus de 500 themes et composants communautaires. Pour le contenu, "
+                "Astro s'integre avec les principaux CMS headless : Contentful, Strapi, "
+                "Sanity, Storyblok, WordPress (via API REST), Prismic et bien d'autres. "
+                "Cote authentification et base de donnees, Astro DB fournit une solution "
+                "integree, tandis que des integrations avec Supabase, Firebase, Turso et "
+                "Drizzle ORM sont disponibles. L'outil de build sous-jacent Vite permet "
+                "d'utiliser l'ensemble de l'ecosysteme de plugins Vite et Rollup."
+            ),
+            "companies": [
+                "Google (Firebase docs)",
+                "Porsche",
+                "Microsoft (documentation)",
+                "Nordstrom",
+                "The Guardian",
+                "Rokt",
+                "Trivago",
+            ],
+            "code_example": (
+                "---\n"
+                "// src/pages/index.astro\n"
+                "import Layout from '../layouts/Layout.astro';\n"
+                "import Card from '../components/Card.astro';\n"
+                "import Compteur from '../components/Compteur.jsx';\n"
+                "import { getCollection } from 'astro:content';\n\n"
+                "const articles = await getCollection('blog');\n"
+                "const articlesRecents = articles\n"
+                "  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())\n"
+                "  .slice(0, 5);\n"
+                "---\n\n"
+                "<Layout titre=\"Accueil\">\n"
+                "  <main>\n"
+                "    <h1>Bienvenue sur mon site</h1>\n"
+                "    <p>Construit avec Astro pour une performance optimale.</p>\n\n"
+                "    <!-- Ilot interactif React, hydrate quand visible -->\n"
+                "    <Compteur client:visible initial={0} />\n\n"
+                "    <section>\n"
+                "      <h2>Articles recents</h2>\n"
+                "      {articlesRecents.map((article) => (\n"
+                "        <Card\n"
+                "          titre={article.data.titre}\n"
+                "          description={article.data.description}\n"
+                "          url={`/blog/${article.slug}`}\n"
+                "        />\n"
+                "      ))}\n"
+                "    </section>\n"
+                "  </main>\n"
+                "</Layout>"
+            ),
+            "performance": {
+                "startup_time": (
+                    "Le temps de demarrage des sites Astro est exceptionnel. En mode statique, "
+                    "les pages sont de purs fichiers HTML sans JavaScript a parser ni a executer, "
+                    "ce qui permet un First Contentful Paint (FCP) quasi instantane. Meme en mode "
+                    "SSR, le rendu cote serveur est extremement rapide car le framework ne charge "
+                    "que le strict minimum de JavaScript. Les metriques Core Web Vitals sont "
+                    "naturellement excellentes sans optimisation particuliere."
+                ),
+                "throughput": (
+                    "Le debit des sites Astro statiques depend principalement du serveur web ou "
+                    "du CDN qui les heberge, car les pages sont pre-generees. En mode SSR, le "
+                    "rendu est efficient grace a un moteur de templates optimise et a l'absence "
+                    "de framework lourd cote serveur. Les pages contenant des ilots interactifs "
+                    "chargent le JavaScript de maniere incrementale, evitant les goulets "
+                    "d'etranglement au chargement."
+                ),
+                "memory": (
+                    "La consommation memoire cote client est minimale pour les pages purement "
+                    "statiques. Seuls les ilots interactifs consomment de la memoire JavaScript, "
+                    "et chaque ilot est isole, evitant les fuites memoire liees a une application "
+                    "monolithique. Cote serveur, lors du build, Astro peut consommer une quantite "
+                    "significative de memoire pour les sites tres volumineux avec des milliers "
+                    "de pages a generer."
+                ),
+                "concurrency_model": (
+                    "Astro n'impose pas de modele de concurrence specifique cote client, car "
+                    "chaque ilot fonctionne de maniere independante. En mode SSR, le serveur "
+                    "peut traiter les requetes de maniere concurrente grace aux adaptateurs "
+                    "Node.js, Deno ou Cloudflare Workers. Les ilots etant independants, ils "
+                    "peuvent etre hydrater en parallele sans conflit."
+                ),
+            },
+            "learning_curve": (
+                "La courbe d'apprentissage d'Astro est l'une des plus douces parmi les "
+                "frameworks web modernes. La syntaxe des fichiers .astro est tres proche du "
+                "HTML standard, avec un frontmatter en JavaScript delimite par des tirets (---). "
+                "Les developpeurs ayant des bases en HTML, CSS et JavaScript peuvent devenir "
+                "productifs en quelques heures. Les concepts de routage par fichiers et de "
+                "composants sont intuitifs. Cependant, la maitrise de l'Island Architecture, "
+                "des strategies d'hydratation (client:load, client:visible, client:idle), des "
+                "Content Collections et des differents modes de rendu (statique, SSR, hybride) "
+                "necessite un apprentissage supplementaire. Les developpeurs habitues aux SPA "
+                "traditionnels doivent adapter leur modele mental a l'approche 'HTML-first' "
+                "d'Astro, ce qui peut demander un certain temps d'ajustement."
+            ),
+            "community_size": (
+                "La communaute Astro connait une croissance rapide et impressionnante depuis "
+                "sa creation. Le depot GitHub du framework depasse les 48 000 etoiles et "
+                "continue de croitre regulierement. Le serveur Discord officiel regroupe des "
+                "dizaines de milliers de membres actifs et constitue le principal lieu d'echange "
+                "et de support. Astro organise des evenements communautaires reguliers et "
+                "dispose d'un programme d'ambassadeurs. La communaute est reconnue pour son "
+                "ouverture, sa bienveillance et sa reactivite. Bien que plus petite que celles "
+                "de React ou Vue, elle est extremement engagee et contribue activement a "
+                "l'ecosysteme via des themes, des integrations et des tutoriels."
+            ),
+            "job_market": (
+                "Le marche de l'emploi pour Astro est encore emergent mais en forte croissance. "
+                "Les offres mentionnant Astro se concentrent principalement dans les agences "
+                "web, les equipes de documentation technique et les entreprises axees sur le "
+                "contenu et le marketing digital. La demande est particulierement forte pour "
+                "les roles lies au developpement de sites performants et bien references. "
+                "Les developpeurs maitrisant Astro sont souvent recherches pour des missions "
+                "de refonte visant a ameliorer les performances web. Comme Astro permet "
+                "d'utiliser React, Vue ou Svelte, la competence Astro est souvent combinee "
+                "avec la maitrise d'un de ces frameworks, augmentant l'employabilite globale "
+                "du developpeur."
+            ),
+        },
+        "traits": {
+            "performance": 9,
+            "developer_speed": 8,
+            "learning_curve": 3,
+            "ecosystem_size": 5,
+            "type_safety": 6,
+            "concurrency": 5,
+            "memory_safety": 5,
+            "scalability": 7,
+        },
+    },
+
+    "solidjs": {
+        "name": "SolidJS",
+        "category": "frontend",
+        "year_created": 2018,
+        "creator": "Ryan Carniato",
+        "paradigm": ["Reactif fin", "Declaratif", "Compile"],
+        "typing": "JavaScript/TypeScript",
+        "sections": {
+            "overview": (
+                "SolidJS est un framework JavaScript declaratif et performant pour construire "
+                "des interfaces utilisateur. Cree par Ryan Carniato et rendu public en 2018, "
+                "SolidJS se distingue par son approche unique de la reactivite a grain fin "
+                "(fine-grained reactivity) et par l'absence totale de Virtual DOM. Contrairement "
+                "a React qui utilise un DOM virtuel et un mecanisme de reconciliation pour "
+                "detecter les changements, SolidJS compile les composants en instructions "
+                "imperatives qui mettent a jour le DOM reel de maniere chirurgicale, uniquement "
+                "la ou les donnees ont change.\n\n"
+                "Le systeme de reactivite de SolidJS repose sur trois primitives fondamentales : "
+                "les signaux (createSignal), les effets (createEffect) et les memos "
+                "(createMemo). Un signal est une valeur reactive qui peut etre lue et modifiee. "
+                "Lorsqu'un signal est lu a l'interieur d'un effet ou d'un calcul derive, "
+                "SolidJS enregistre automatiquement cette dependance. Quand la valeur du signal "
+                "change, seuls les effets et les parties du DOM qui dependent de ce signal "
+                "specifique sont mis a jour, sans recalculer l'ensemble de l'arbre de "
+                "composants.\n\n"
+                "Cette approche offre des performances remarquables qui rivalisent avec du "
+                "JavaScript vanille optimise. Dans les benchmarks JS Framework, SolidJS se "
+                "classe regulierement parmi les frameworks les plus rapides, souvent en tete "
+                "du classement. La syntaxe de SolidJS ressemble volontairement a celle de "
+                "React avec l'utilisation de JSX, ce qui facilite la transition pour les "
+                "developpeurs React. Cependant, sous cette syntaxe familiere se cache un "
+                "modele d'execution fondamentalement different : les composants SolidJS ne "
+                "s'executent qu'une seule fois (pas de re-rendu), et c'est le systeme de "
+                "reactivite qui se charge de maintenir le DOM a jour. Cette difference "
+                "subtile mais fondamentale elimine des categories entieres de problemes "
+                "de performance comme les re-rendus inutiles, les dependances manquantes "
+                "dans les hooks et les problemes de memoisation."
+            ),
+            "history": (
+                "L'histoire de SolidJS commence en 2016 lorsque Ryan Carniato, alors "
+                "developpeur front-end experimeme, commence a explorer les limites du "
+                "Virtual DOM et les alternatives possibles. Inspire par les systemes de "
+                "reactivite de Knockout.js et de MobX, mais aussi par les techniques de "
+                "compilation de Svelte, Carniato entreprend de creer un framework qui "
+                "combinerait la reactivite a grain fin avec une syntaxe familiere de "
+                "type JSX.\n\n"
+                "Les premieres versions de SolidJS ont ete publiees sur npm des 2018, "
+                "mais le framework est reste relativement confidentiel pendant ses "
+                "premieres annees. La version 1.0 a ete publiee en juin 2021, marquant "
+                "un jalon important de stabilite et de maturite. Cette sortie a ete "
+                "accompagnee d'une visibilite accrue dans la communaute JavaScript, "
+                "notamment grace aux benchmarks impressionnants du framework.\n\n"
+                "En 2022, SolidJS a remporte le prix du projet open source le plus "
+                "innovant lors des OS Awards, confirmant sa reconnaissance par la "
+                "communaute. SolidStart, le meta-framework officiel pour le rendu cote "
+                "serveur et le routage, a ete annonce et developpe activement. La "
+                "version 1.7 (2023) et les versions suivantes ont apporte des "
+                "ameliorations continues en termes de taille de bundle, de performances "
+                "de compilation et de support TypeScript. Le projet Solid 2.0 est en "
+                "cours de developpement avec des ameliorations significatives du systeme "
+                "de reactivite et du compilateur."
+            ),
+            "architecture": (
+                "L'architecture de SolidJS se distingue fondamentalement des frameworks "
+                "bases sur le Virtual DOM par son approche de reactivite a grain fin sans "
+                "VDOM. Dans SolidJS, la reactivite est la brique de base sur laquelle tout "
+                "le systeme est construit. Le compilateur transforme le JSX en appels DOM "
+                "reels optimises a la compilation, eliminant le besoin d'un algorithme de "
+                "diffing au runtime.\n\n"
+                "Le systeme de reactivite repose sur un graphe de dependances automatique. "
+                "Lorsqu'un composant s'execute pour la premiere fois, SolidJS cree les "
+                "elements DOM et etablit les liaisons reactives. Chaque expression reactive "
+                "dans le JSX est enveloppee dans un effet qui s'abonne automatiquement aux "
+                "signaux qu'elle lit. Quand un signal change, seuls les effets concernes "
+                "sont re-executes, mettant a jour directement les noeuds DOM correspondants "
+                "sans toucher au reste de l'arbre.\n\n"
+                "Cette architecture elimine plusieurs couches d'abstraction presentes dans "
+                "les frameworks a Virtual DOM : pas de creation d'arbre virtuel, pas de "
+                "diffing, pas de reconciliation, pas de re-rendu de composants entiers. "
+                "Le resultat est une empreinte memoire reduite et des mises a jour quasi "
+                "instantanees. Le compilateur SolidJS joue un role crucial en analysant "
+                "le JSX pour identifier les parties statiques et dynamiques du template. "
+                "Les parties statiques sont creees une seule fois via des clones de "
+                "template HTML, tandis que les parties dynamiques sont connectees au "
+                "systeme reactif. Cette separation permet des optimisations impossibles "
+                "dans les frameworks qui recalculent l'arbre entier a chaque mise a jour."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Performances parmi les meilleures de tous les frameworks, proches du JavaScript vanille",
+                    "Reactivite a grain fin eliminant les re-rendus inutiles et les problemes de memoisation",
+                    "Syntaxe JSX familiere facilitant la transition depuis React",
+                    "Taille de bundle tres reduite grace a la compilation et au tree-shaking agressif",
+                    "Composants executes une seule fois, simplifiant le modele mental d'execution",
+                    "Primitives reactives puissantes et composables (signaux, effets, memos)",
+                    "Support TypeScript solide et natif",
+                ],
+                "cons": [
+                    "Ecosysteme encore restreint par rapport a React ou Vue, moins de bibliotheques tierces",
+                    "Communaute plus petite limitant les ressources d'apprentissage disponibles",
+                    "SolidStart (meta-framework) est encore en phase de maturation",
+                    "Les differences subtiles avec React (pas de re-rendu, destructuration interdite des props) peuvent creer de la confusion",
+                    "Moins d'offres d'emploi specifiquement dediees a SolidJS",
+                    "Le modele de reactivite a grain fin peut surprendre les developpeurs habitues au Virtual DOM",
+                ],
+            },
+            "use_cases": (
+                "SolidJS excelle dans les applications ou la performance est une priorite "
+                "absolue. Les tableaux de bord interactifs avec de nombreuses mises a jour "
+                "en temps reel, les visualisations de donnees complexes, les editeurs en "
+                "ligne et les applications de type feuille de calcul tirent pleinement parti "
+                "de la reactivite a grain fin de SolidJS. Les interfaces avec des milliers "
+                "d'elements interactifs, ou les frameworks bases sur le Virtual DOM montrent "
+                "leurs limites, sont un terrain ideal pour SolidJS.\n\n"
+                "Les applications embarquees et les widgets tiers beneficient de la petite "
+                "taille de bundle de SolidJS. Les projets necessitant une reactivite "
+                "ultra-rapide, comme les outils de trading, les jeux dans le navigateur "
+                "ou les applications musicales interactives, trouvent dans SolidJS un "
+                "framework capable de rivaliser avec du code natif. Les developpeurs React "
+                "insatisfaits des problemes de performance ou du modele de re-rendu "
+                "trouvent dans SolidJS une alternative familiere mais fondamentalement "
+                "plus performante."
+            ),
+            "ecosystem": (
+                "L'ecosysteme de SolidJS, bien que plus jeune et plus petit que celui de "
+                "React, croit de maniere soutenue et couvre les besoins essentiels du "
+                "developpement web moderne. SolidStart est le meta-framework officiel "
+                "fournissant le rendu cote serveur (SSR), le routage base sur les fichiers "
+                "et les fonctions serveur, similaire a ce que Next.js offre pour React.\n\n"
+                "Pour le routage cote client, @solidjs/router est la solution officielle. "
+                "Solid Primitives est une collection de primitives reactives utilitaires "
+                "inspiree de VueUse et de react-use. Pour la gestion d'etat, les signaux "
+                "natifs de Solid sont suffisants pour la plupart des cas, mais des "
+                "bibliotheques comme solid-zustand et solid-jotai offrent des patterns "
+                "familiers aux developpeurs React. Kobalte fournit des composants "
+                "d'interface accessibles et sans style, similaires a Radix UI. "
+                "TanStack (Query, Table, Virtual) supporte officiellement SolidJS. "
+                "Pour le styling, Tailwind CSS, UnoCSS et vanilla-extract s'integrent "
+                "parfaitement. Les outils de test incluent solid-testing-library et Vitest. "
+                "L'ecosysteme beneficie egalement de la compatibilite avec la plupart des "
+                "plugins Vite, Vite etant le bundler utilise par defaut."
+            ),
+            "companies": [
+                "eBay",
+                "Cloudflare",
+                "Rakuten",
+                "Tencent",
+                "Builder.io",
+                "Netlify",
+            ],
+            "code_example": (
+                "import { createSignal, createEffect, For, Show } from 'solid-js';\n\n"
+                "function ListeTaches() {\n"
+                "  const [taches, setTaches] = createSignal([]);\n"
+                "  const [saisie, setSaisie] = createSignal('');\n"
+                "  const [filtre, setFiltre] = createSignal('toutes');\n\n"
+                "  // Effet reactif : sauvegarde automatique\n"
+                "  createEffect(() => {\n"
+                "    localStorage.setItem('taches', JSON.stringify(taches()));\n"
+                "  });\n\n"
+                "  const tachesFiltrees = () => {\n"
+                "    const f = filtre();\n"
+                "    if (f === 'actives') return taches().filter(t => !t.faite);\n"
+                "    if (f === 'terminees') return taches().filter(t => t.faite);\n"
+                "    return taches();\n"
+                "  };\n\n"
+                "  const ajouterTache = () => {\n"
+                "    if (saisie().trim()) {\n"
+                "      setTaches([...taches(), {\n"
+                "        id: Date.now(),\n"
+                "        texte: saisie(),\n"
+                "        faite: false\n"
+                "      }]);\n"
+                "      setSaisie('');\n"
+                "    }\n"
+                "  };\n\n"
+                "  const basculer = (id) => {\n"
+                "    setTaches(taches().map(t =>\n"
+                "      t.id === id ? { ...t, faite: !t.faite } : t\n"
+                "    ));\n"
+                "  };\n\n"
+                "  return (\n"
+                "    <div>\n"
+                "      <h1>Liste de taches</h1>\n"
+                "      <input\n"
+                "        value={saisie()}\n"
+                "        onInput={(e) => setSaisie(e.target.value)}\n"
+                "        placeholder=\"Nouvelle tache...\"\n"
+                "      />\n"
+                "      <button onClick={ajouterTache}>Ajouter</button>\n\n"
+                "      <div>\n"
+                "        <button onClick={() => setFiltre('toutes')}>Toutes</button>\n"
+                "        <button onClick={() => setFiltre('actives')}>Actives</button>\n"
+                "        <button onClick={() => setFiltre('terminees')}>Terminees</button>\n"
+                "      </div>\n\n"
+                "      <ul>\n"
+                "        <For each={tachesFiltrees()}>\n"
+                "          {(tache) => (\n"
+                "            <li\n"
+                "              onClick={() => basculer(tache.id)}\n"
+                "              style={{ 'text-decoration': tache.faite ? 'line-through' : 'none' }}\n"
+                "            >\n"
+                "              {tache.texte}\n"
+                "            </li>\n"
+                "          )}\n"
+                "        </For>\n"
+                "      </ul>\n\n"
+                "      <Show when={taches().length > 0}>\n"
+                "        <p>{taches().filter(t => !t.faite).length} taches restantes</p>\n"
+                "      </Show>\n"
+                "    </div>\n"
+                "  );\n"
+                "}\n\n"
+                "export default ListeTaches;"
+            ),
+            "performance": {
+                "startup_time": (
+                    "Le temps de demarrage de SolidJS est parmi les plus rapides de tous "
+                    "les frameworks JavaScript. Le runtime de SolidJS est extremement leger "
+                    "(environ 7 Ko minifie et gzippe), bien plus petit que React ou Vue. "
+                    "Les composants etant compiles en instructions DOM directes, il n'y a "
+                    "pas de Virtual DOM a initialiser ni d'arbre de composants a construire. "
+                    "Le premier rendu est quasi instantane, avec un Time to Interactive (TTI) "
+                    "minimal."
+                ),
+                "throughput": (
+                    "Le debit de SolidJS est exceptionnel grace a l'absence de Virtual DOM "
+                    "et a la reactivite a grain fin. Chaque mise a jour ne touche que les "
+                    "noeuds DOM concernes, sans recalcul ni comparaison d'arbre. Dans les "
+                    "benchmarks JS Framework, SolidJS affiche des temps de mise a jour "
+                    "jusqu'a 2 a 5 fois plus rapides que React pour les operations sur les "
+                    "listes et les mises a jour partielles. Le batching automatique des "
+                    "mises a jour evite les re-rendus superflus."
+                ),
+                "memory": (
+                    "La consommation memoire de SolidJS est remarquablement faible. "
+                    "L'absence de Virtual DOM elimine la duplication de la structure de "
+                    "l'interface en memoire. Chaque signal occupe un espace minimal et les "
+                    "abonnements reactifs sont legers. Les benchmarks montrent une utilisation "
+                    "memoire 30 a 50 pourcent inferieure a React pour des applications "
+                    "equivalentes. Le garbage collector est moins sollicite car il n'y a "
+                    "pas de creation et destruction repetees d'arbres virtuels."
+                ),
+                "concurrency_model": (
+                    "SolidJS gere la concurrence via son systeme de batching reactif. Les "
+                    "mises a jour de signaux au sein d'une meme transaction sont regroupees "
+                    "et appliquees de maniere synchrone, evitant les etats intermediaires "
+                    "incoherents. Les transitions (useTransition) permettent de marquer "
+                    "certaines mises a jour comme non urgentes, similairement a React 18. "
+                    "Le modele synchrone de SolidJS simplifie le raisonnement sur l'ordre "
+                    "des mises a jour par rapport au rendu concurrent asynchrone."
+                ),
+            },
+            "learning_curve": (
+                "La courbe d'apprentissage de SolidJS est moderee, avec des nuances "
+                "importantes selon l'experience du developpeur. Pour les developpeurs React, "
+                "la syntaxe JSX et les concepts de composants sont immediatement familiers, "
+                "permettant une prise en main rapide des bases. Cependant, les differences "
+                "fondamentales avec React representent un defi subtil : les composants ne "
+                "s'executent qu'une seule fois, les props ne doivent pas etre destructurees "
+                "(car cela casse la reactivite), et les signaux doivent etre appeles comme "
+                "des fonctions pour lire leur valeur. Ces differences, bien que simples en "
+                "theorie, necessitent un changement de reflexes profondement ancres chez les "
+                "developpeurs React. La maitrise du systeme de reactivite a grain fin, des "
+                "stores, des contextes et des patterns avances de composition reactive demande "
+                "un investissement significatif. Les developpeurs venant de Knockout.js ou "
+                "MobX retrouveront des concepts familiers et auront une transition plus douce."
+            ),
+            "community_size": (
+                "La communaute SolidJS est encore modeste en taille mais extremement passionnee "
+                "et active. Le depot GitHub compte plus de 33 000 etoiles, temoignant d'un "
+                "interet significatif malgre la jeunesse relative du framework. Le serveur "
+                "Discord officiel est le principal lieu d'echange, avec plusieurs milliers de "
+                "membres actifs. Ryan Carniato, le createur, est tres present et accessible, "
+                "participant regulierement aux discussions et repondant aux questions. La "
+                "communaute contribue activement aux bibliotheques de l'ecosysteme et a la "
+                "documentation. Des contenus educatifs (articles de blog, videos YouTube, "
+                "cours) emergent de maniere croissante, bien que les ressources restent "
+                "moins abondantes que pour React ou Vue."
+            ),
+            "job_market": (
+                "Le marche de l'emploi specifiquement dedie a SolidJS est encore restreint "
+                "en 2025, le framework etant principalement adopte par des equipes techniques "
+                "avancees et des entreprises privilegiant la performance maximale. Les offres "
+                "d'emploi mentionnant SolidJS sont rares mais souvent associees a des postes "
+                "techniques de haut niveau. Cependant, la maitrise de SolidJS est un signal "
+                "fort de competence technique approfondie qui est valorise lors des entretiens, "
+                "meme pour des postes React. La comprehension de la reactivite a grain fin et "
+                "de la compilation de templates sont des competences transferables a l'ensemble "
+                "de l'ecosysteme frontend moderne, ou ces concepts influencent de plus en plus "
+                "les frameworks etablis (Signals dans Angular, Fine-grained Reactivity dans "
+                "Vue Vapor). Les developpeurs SolidJS sont souvent recrutes pour des roles "
+                "d'architecte frontend ou de lead technique."
+            ),
+        },
+        "traits": {
+            "performance": 10,
+            "developer_speed": 7,
+            "learning_curve": 4,
+            "ecosystem_size": 4,
+            "type_safety": 7,
+            "concurrency": 5,
+            "memory_safety": 5,
+            "scalability": 7,
+        },
+    },
 }

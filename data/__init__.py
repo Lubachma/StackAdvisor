@@ -9,6 +9,7 @@ from data.desktop import TECHNOLOGIES as DESK
 from data.devops import TECHNOLOGIES as DEVOPS
 from data.game_engines import TECHNOLOGIES as GAME
 from data.ml import TECHNOLOGIES as ML
+from data.messaging import TECHNOLOGIES as MSG
 
 # Registre par nom de categorie (pour le navigateur)
 REGISTRY = {
@@ -21,6 +22,7 @@ REGISTRY = {
     "Outils DevOps": DEVOPS,
     "Moteurs de Jeu": GAME,
     "Frameworks ML / IA": ML,
+    "Message Queues / Streaming": MSG,
 }
 
 
