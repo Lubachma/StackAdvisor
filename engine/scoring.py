@@ -20,16 +20,20 @@ def compute_recommendations(answers, all_technologies):
     # Etape 2: Calculer les scores de base
     scores, reasons = _apply_question_scores(answers, all_technologies)
 
-    # Etape 3: Appliquer les bonus de synergie
-    scores = _apply_synergy_bonuses(scores, all_technologies)
+    # Etape 3: Filtrer aux categories pertinentes AVANT les synergies
+    relevant_techs = {tid for tid, t in all_technologies.items()
+                      if t.get("category") in relevant_cats}
 
-    # Etape 4: Grouper par categorie et filtrer
+    # Etape 4: Appliquer les bonus de synergie (seulement entre technos pertinentes)
+    scores = _apply_synergy_bonuses(scores, all_technologies, relevant_techs)
+
+    # Etape 5: Grouper par categorie et filtrer
     category_scores = _group_by_category(scores, reasons, all_technologies, relevant_cats)
 
-    # Etape 5: Normaliser les scores
+    # Etape 6: Normaliser les scores
     category_scores = _normalize_scores(category_scores)
 
-    # Etape 6: Construire la stack recommandee
+    # Etape 7: Construire la stack recommandee
     stack = _build_stack(category_scores)
 
     return {
@@ -139,18 +143,17 @@ def _make_reason(question_id, answer_value, delta):
     return q_reasons.get(answer_value, f"{question_id}: {answer_value}")
 
 
-def _apply_synergy_bonuses(scores, all_technologies):
-    """Deuxieme passe: bonus pour les technos qui marchent bien ensemble."""
-    # On ne booste que les technos qui ont deja un score positif
-    positive_techs = {t for t, s in scores.items() if s > 0}
+def _apply_synergy_bonuses(scores, all_technologies, relevant_techs):
+    """Deuxieme passe: bonus pour les technos qui marchent bien ensemble.
+    Ne considere que les synergies entre technologies pertinentes avec un score minimum."""
+    # Seuil: seules les technos avec un score significatif declenchent des synergies
+    min_score = 5
+    strong_relevant = {t for t in relevant_techs if scores.get(t, 0) >= min_score}
 
     for (tech_a, tech_b), bonus in SYNERGIES.items():
-        if tech_a in positive_techs and tech_b in positive_techs:
-            # Bonus proportionnel aux scores actuels
-            if tech_a in scores:
-                scores[tech_a] += bonus * 0.5
-            if tech_b in scores:
-                scores[tech_b] += bonus * 0.5
+        if tech_a in strong_relevant and tech_b in strong_relevant:
+            scores[tech_a] += bonus * 1.5
+            scores[tech_b] += bonus * 1.5
 
     return scores
 
