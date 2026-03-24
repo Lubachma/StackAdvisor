@@ -2287,4 +2287,426 @@ TECHNOLOGIES: dict = {
             "scalability": 10
         }
     },
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 11. ASP.NET Core
+    # ─────────────────────────────────────────────────────────────────────
+    "aspnet": {
+        "name": "ASP.NET Core",
+        "category": "backend",
+        "year_created": 2016,
+        "creator": "Microsoft",
+        "paradigm": ["MVC", "Middleware", "Oriente Objet"],
+        "typing": "C# (typage statique fort)",
+        "sections": {
+            "overview": (
+                "ASP.NET Core est le framework web open source et multiplateforme de Microsoft, "
+                "successeur moderne du framework ASP.NET historique qui etait lie a Windows. Lance "
+                "en 2016, il represente une reecriture complete concue pour offrir des performances "
+                "elevees, une modularite poussee et une compatibilite avec Linux, macOS et Windows. "
+                "ASP.NET Core s'appuie sur le runtime .NET (anciennement .NET Core) et le langage C#, "
+                "un langage a typage statique fort qui beneficie d'un systeme de types extremement "
+                "riche incluant les generiques, les nullables reference types, le pattern matching "
+                "avance et les records. Le framework adopte une architecture basee sur le pipeline "
+                "de middlewares, similaire dans son concept a Express.js, mais avec la puissance "
+                "supplementaire du typage statique et de la compilation AOT (Ahead of Time). Il "
+                "propose un modele MVC complet, des Razor Pages pour les applications orientees "
+                "pages, des API minimales (minimal APIs) pour les microservices legers, et Blazor "
+                "pour le developpement web full-stack en C#. L'injection de dependances est integree "
+                "nativement au framework, ce qui favorise une architecture propre et testable. "
+                "ASP.NET Core offre des performances remarquables, se classant regulierement parmi "
+                "les frameworks les plus rapides dans les benchmarks TechEmpower. Son ecosysteme "
+                "beneficie de la puissance de NuGet, le gestionnaire de paquets .NET, et de "
+                "l'integration profonde avec Visual Studio, l'IDE le plus complet du marche. "
+                "Microsoft investit massivement dans son developpement, garantissant un support "
+                "a long terme, une documentation exhaustive et des mises a jour regulieres."
+            ),
+            "history": (
+                "L'histoire d'ASP.NET Core commence en 2014, lorsque Microsoft a annonce une "
+                "reecriture complete de son framework web sous la direction de Scott Hanselman "
+                "et Damian Edwards. Ce projet, initialement nomme ASP.NET vNext puis ASP.NET 5, "
+                "visait a rompre avec l'heritage monolithique du .NET Framework pour creer un "
+                "framework leger, modulaire et multiplateforme. La decision de rendre le framework "
+                "open source et compatible avec Linux et macOS marquait un tournant radical dans "
+                "la strategie de Microsoft, historiquement centree sur Windows. La premiere version "
+                "stable, ASP.NET Core 1.0, est sortie en juin 2016 aux cotes de .NET Core 1.0. "
+                "La version 2.0 (2017) a apporte le Razor Pages et des ameliorations significatives "
+                "de productivite. La version 3.0 (2019) a introduit Blazor Server, permettant de "
+                "construire des interfaces web interactives en C# au lieu de JavaScript, ainsi que "
+                "gRPC pour les communications inter-services performantes. Avec .NET 5 (2020), "
+                "Microsoft a unifie .NET Core et .NET Framework sous une seule plateforme, et "
+                "ASP.NET Core est devenu simplement une partie de .NET. Les versions ulterieures "
+                "ont apporte les minimal APIs (.NET 6), la compilation Native AOT (.NET 7), "
+                "Blazor United (.NET 8), et des ameliorations continues de performance. "
+                "L'evolution d'ASP.NET Core reflete la transformation de Microsoft en acteur "
+                "majeur de l'open source, et le framework est desormais un pilier du developpement "
+                "web d'entreprise moderne."
+            ),
+            "architecture": (
+                "L'architecture d'ASP.NET Core repose sur un pipeline de middlewares configurable "
+                "et un systeme d'injection de dependances integre. Chaque requete HTTP traverse "
+                "une chaine de middlewares (authentification, routage, CORS, compression, etc.) "
+                "avant d'atteindre le endpoint qui la traite. Ce pipeline est configure dans le "
+                "fichier Program.cs avec une syntaxe fluide et explicite. Le framework propose "
+                "plusieurs modeles de programmation : le pattern MVC classique avec controleurs, "
+                "vues Razor et modeles ; les Razor Pages pour une approche orientee page ; les "
+                "minimal APIs pour des endpoints legers et rapides ; et Blazor pour les composants "
+                "interactifs. Le systeme de routage est base sur les attributs (attribute routing) "
+                "ou la convention, avec support des contraintes de route et de la generation d'URL. "
+                "L'injection de dependances (DI) est un citoyen de premiere classe : tous les "
+                "services sont enregistres dans un conteneur DI au demarrage et injectes "
+                "automatiquement dans les controleurs, middlewares et autres composants. Le "
+                "framework supporte nativement la configuration hierarchique (appsettings.json, "
+                "variables d'environnement, secrets utilisateur, Azure Key Vault), la journalisation "
+                "structuree, les health checks, et le hosting dans Kestrel (serveur HTTP integre "
+                "hautes performances). Pour la concurrence, ASP.NET Core exploite le modele "
+                "async/await de C# avec le pool de threads de .NET, permettant de gerer des "
+                "milliers de requetes simultanees efficacement. L'architecture est concue pour "
+                "le cloud avec le support natif des conteneurs Docker, de Kubernetes, et des "
+                "services Azure."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Performances excellentes, parmi les frameworks les plus rapides",
+                    "Typage statique fort avec C# reduisant les erreurs a la compilation",
+                    "Injection de dependances native favorisant une architecture testable",
+                    "Framework multiplateforme (Windows, Linux, macOS)",
+                    "Support massif de Microsoft avec documentation exhaustive",
+                    "Ecosysteme NuGet mature avec des milliers de bibliotheques"
+                ],
+                "cons": [
+                    "Courbe d'apprentissage significative pour les developpeurs hors ecosysteme .NET",
+                    "Verbeux par rapport aux frameworks dynamiques (Python, Node.js)",
+                    "Configuration initiale plus lourde que les frameworks minimalistes",
+                    "Ecosysteme historiquement centre sur Windows malgre le virage multiplateforme",
+                    "Complexite des abstractions (DI, middleware pipeline, configuration)",
+                    "Deploiement plus lourd qu'un simple script Node.js ou Python"
+                ]
+            },
+            "use_cases": (
+                "ASP.NET Core excelle dans le developpement d'applications d'entreprise a grande "
+                "echelle ou la robustesse, la performance et la maintenabilite sont essentielles. "
+                "Il est particulierement adapte aux API REST et GraphQL haute performance, aux "
+                "microservices communiquant via gRPC, aux applications web full-stack avec Blazor, "
+                "et aux systemes necessitant une securite avancee (banque, sante, gouvernement). "
+                "Les cas d'usage typiques incluent les portails d'entreprise, les systemes de "
+                "gestion interne (ERP, CRM), les plateformes e-commerce a fort trafic, les "
+                "applications SaaS multi-tenant, et les backends d'applications mobiles. "
+                "ASP.NET Core est egalement un excellent choix pour les architectures serverless "
+                "sur Azure Functions et pour les applications temps reel utilisant SignalR. "
+                "Le framework est moins adapte aux petits scripts, aux prototypes rapides ou "
+                "aux projets ou la simplicite prime sur la robustesse. Les equipes utilisant "
+                "deja l'ecosysteme Microsoft (Azure, SQL Server, Visual Studio) tirent un "
+                "benefice maximal d'ASP.NET Core grace a l'integration profonde entre les outils."
+            ),
+            "ecosystem_size": (
+                "L'ecosysteme d'ASP.NET Core s'appuie sur NuGet, le gestionnaire de paquets .NET, "
+                "qui heberge plus de 350 000 paquets. Entity Framework Core est l'ORM principal, "
+                "offrant un mapping objet-relationnel puissant avec support des migrations, du "
+                "lazy loading et des requetes LINQ fortement typees. Dapper est l'alternative "
+                "micro-ORM pour les scenarios exigeant des performances brutes maximales. "
+                "Pour l'authentification, ASP.NET Core Identity fournit un systeme complet "
+                "de gestion des utilisateurs, roles et claims, integrable avec OAuth2, OpenID "
+                "Connect, et les fournisseurs d'identite externes (Azure AD, Google, Facebook). "
+                "La documentation d'API est geree par Swashbuckle (Swagger/OpenAPI) ou NSwag. "
+                "Pour les tests, xUnit, NUnit et MSTest sont les frameworks principaux, "
+                "completes par Moq et FluentAssertions. La journalisation structuree est "
+                "assuree par Serilog ou NLog. MediatR implemente le pattern Mediator pour "
+                "les architectures CQRS. FluentValidation fournit une validation declarative "
+                "elegante. Polly gere la resilience (retry, circuit breaker, timeout). "
+                "MassTransit et NServiceBus offrent des abstractions de messaging robustes. "
+                "Hangfire et Quartz.NET gerent les taches en arriere-plan. L'ecosysteme est "
+                "mature, bien documente et activement maintenu."
+            ),
+            "companies": [
+                "Microsoft", "Stack Overflow", "UPS", "GE Aviation",
+                "Siemens", "Alibaba", "Chipotle", "GoDaddy"
+            ],
+            "code_example": (
+                "using Microsoft.AspNetCore.Mvc;\n\n"
+                "var builder = WebApplication.CreateBuilder(args);\n"
+                "builder.Services.AddControllers();\n"
+                "builder.Services.AddScoped<IUserService, UserService>();\n\n"
+                "var app = builder.Build();\n"
+                "app.UseHttpsRedirection();\n"
+                "app.UseAuthorization();\n"
+                "app.MapControllers();\n"
+                "app.Run();\n\n"
+                "// Controleur avec injection de dependances\n"
+                "[ApiController]\n"
+                "[Route(\"api/[controller]\")]\n"
+                "public class UsersController : ControllerBase\n"
+                "{\n"
+                "    private readonly IUserService _userService;\n\n"
+                "    public UsersController(IUserService userService)\n"
+                "        => _userService = userService;\n\n"
+                "    [HttpGet]\n"
+                "    public async Task<ActionResult<IEnumerable<User>>> GetAll()\n"
+                "        => Ok(await _userService.GetAllAsync());\n\n"
+                "    [HttpGet(\"{id}\")]\n"
+                "    public async Task<ActionResult<User>> GetById(int id)\n"
+                "    {\n"
+                "        var user = await _userService.GetByIdAsync(id);\n"
+                "        return user is null ? NotFound() : Ok(user);\n"
+                "    }\n"
+                "}"
+            ),
+            "performance": {
+                "startup_time": "Moderee (~1-3 secondes). Le chargement du runtime .NET et la compilation JIT prennent du temps au demarrage, mais la compilation AOT dans .NET 7+ reduit considerablement ce delai.",
+                "throughput": "Tres eleve : 200 000-500 000 requetes/seconde pour les endpoints simples. ASP.NET Core se classe regulierement dans le top 5 des benchmarks TechEmpower tous frameworks confondus.",
+                "memory": "Moderee (~50-150 Mo pour une application typique). Le ramasse-miettes (GC) de .NET est hautement optimise avec des generations et un mode serveur dedie aux charges elevees.",
+                "concurrency_model": "Modele async/await avec pool de threads gere par le runtime .NET. Chaque requete est traitee de maniere asynchrone, liberant les threads pendant les operations d'E/S. Kestrel utilise des E/S asynchrones basees sur libuv ou les sockets .NET natifs."
+            },
+            "learning_curve": (
+                "La courbe d'apprentissage d'ASP.NET Core est significative, surtout pour les "
+                "developpeurs ne venant pas de l'ecosysteme .NET. Il faut d'abord maitriser C#, "
+                "un langage riche et expressif mais avec de nombreux concepts avances : generiques, "
+                "async/await, LINQ, delegates, events, pattern matching, records, et les types "
+                "nullables reference. Le framework lui-meme introduit des concepts importants : "
+                "le pipeline de middlewares, l'injection de dependances, la configuration "
+                "hierarchique, le routage par attributs, et les differents modeles de programmation "
+                "(MVC, Razor Pages, minimal APIs, Blazor). Entity Framework Core demande un "
+                "apprentissage supplementaire avec ses conventions, ses migrations, et le query "
+                "provider LINQ. La documentation officielle de Microsoft est exceptionnellement "
+                "complete avec des tutoriels pas a pas, des guides conceptuels et une reference "
+                "d'API exhaustive. Visual Studio offre un support IntelliSense de premier ordre "
+                "qui accelere l'apprentissage. Les developpeurs Java trouvent la transition "
+                "relativement naturelle grace aux similitudes entre C# et Java, et entre "
+                "ASP.NET Core et Spring Boot. Les developpeurs Python ou JavaScript doivent "
+                "s'adapter au typage statique et a la verbosity accrue. En general, un "
+                "developpeur experimente peut devenir productif en un a deux mois, mais la "
+                "maitrise complete de l'ecosysteme .NET (Entity Framework, Identity, SignalR, "
+                "Azure) demande six mois a un an d'experience pratique."
+            ),
+            "community_size": "Tres large. Plus de 35 000 etoiles sur GitHub, des millions de developpeurs dans le monde, conferences .NET Conf et NDC, communaute active sur Stack Overflow, Reddit et Discord.",
+            "job_market": "Marche de l'emploi tres favorable, particulierement dans les grandes entreprises et les ESN. ASP.NET Core est le framework backend dominant dans l'ecosysteme Microsoft et les postes .NET offrent des salaires competitifs."
+        },
+        "traits": {
+            "performance": 8,
+            "developer_speed": 6,
+            "learning_curve": 6,
+            "ecosystem_size": 8,
+            "type_safety": 9,
+            "concurrency": 8,
+            "memory_safety": 7,
+            "scalability": 9
+        }
+    },
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 12. NestJS
+    # ─────────────────────────────────────────────────────────────────────
+    "nestjs": {
+        "name": "NestJS",
+        "category": "backend",
+        "year_created": 2017,
+        "creator": "Kamil Mysliwiec",
+        "paradigm": ["MVC", "Decorateurs", "Injection de dependances"],
+        "typing": "TypeScript (typage statique)",
+        "sections": {
+            "overview": (
+                "NestJS est un framework Node.js progressif pour la construction d'applications "
+                "serveur efficaces, fiables et scalables. Inspire profondement par Angular, il "
+                "apporte au monde backend Node.js une architecture opinionnee basee sur les "
+                "decorateurs TypeScript, l'injection de dependances et la modularite. Contrairement "
+                "a Express.js qui laisse une liberte totale d'organisation, NestJS impose une "
+                "structure claire avec des modules, des controleurs, des services et des providers "
+                "qui favorisent la separation des responsabilites et la testabilite. Le framework "
+                "utilise Express (ou optionnellement Fastify) comme moteur HTTP sous-jacent, "
+                "ce qui permet de beneficier de l'immense ecosysteme de middlewares existant "
+                "tout en ajoutant une couche d'abstraction structurante. NestJS est ecrit "
+                "entierement en TypeScript et exploite au maximum les fonctionnalites du langage : "
+                "decorateurs, metadata reflection, interfaces, generiques et types avances. Son "
+                "systeme de modules permet de decouper une application en domaines fonctionnels "
+                "independants et reutilisables, chacun encapsulant ses propres controleurs, "
+                "services et providers. Le framework fournit des solutions integrees pour les "
+                "besoins courants : validation (class-validator), serialisation (class-transformer), "
+                "documentation d'API (Swagger/OpenAPI), WebSockets, GraphQL, microservices, "
+                "taches planifiees (cron), files d'attente (queues) et gestion d'evenements. "
+                "Cette approche 'batteries incluses mais modulaires' en fait un choix privilegie "
+                "pour les applications d'entreprise et les equipes qui valorisent la consistance "
+                "architecturale et la maintenabilite a long terme."
+            ),
+            "history": (
+                "NestJS a ete cree en 2017 par Kamil Mysliwiec, un developpeur polonais qui "
+                "cherchait a apporter la rigueur architecturale d'Angular au developpement "
+                "backend Node.js. A l'epoque, l'ecosysteme Node.js offrait principalement des "
+                "frameworks minimalistes comme Express ou Koa, qui laissaient aux developpeurs "
+                "la responsabilite totale de l'architecture. Mysliwiec, familier avec les "
+                "patterns d'Angular (modules, decorateurs, injection de dependances), a voulu "
+                "creer un framework backend qui offrirait la meme experience structuree. La "
+                "premiere version stable a ete publiee sur npm en janvier 2018 et a rapidement "
+                "gagne en popularite grace a sa proposition de valeur unique dans l'ecosysteme "
+                "Node.js. La version 5 (2018) a introduit le support de Fastify comme alternative "
+                "a Express. La version 6 (2019) a apporte des ameliorations majeures au systeme "
+                "de microservices et au module GraphQL. La version 7 (2020) a introduit le "
+                "support natif des lazy-loaded modules pour ameliorer les temps de demarrage. "
+                "La version 8 (2021) a modernise le systeme de configuration et ameliore le "
+                "support de Swagger. Les versions 9 et 10 (2022-2023) ont apporte le support "
+                "de SWC pour une compilation plus rapide, le REPL interactif, et des ameliorations "
+                "de performance. NestJS est devenu le framework TypeScript backend le plus populaire, "
+                "depassant les 60 000 etoiles sur GitHub, et a donne naissance a un ecosysteme "
+                "riche de bibliotheques officielles et communautaires. La societe NestJS Ltd "
+                "propose des services de conseil et de support entreprise, assurant la viabilite "
+                "a long terme du projet."
+            ),
+            "architecture": (
+                "L'architecture de NestJS est fondee sur trois piliers : les modules, les "
+                "controleurs et les providers (services). Chaque application NestJS possede un "
+                "module racine (AppModule) qui peut importer d'autres modules, formant un graphe "
+                "de dependances. Les controleurs sont responsables du traitement des requetes HTTP "
+                "et sont decores avec @Controller(), @Get(), @Post(), @Put(), @Delete(), etc. "
+                "Les services contiennent la logique metier et sont injectes dans les controleurs "
+                "via le constructeur grace au conteneur d'injection de dependances. Le decorateur "
+                "@Injectable() marque une classe comme injectable. Le systeme de modules permet "
+                "l'encapsulation : les providers d'un module ne sont accessibles aux autres modules "
+                "que s'ils sont explicitement exportes. NestJS utilise le pattern Interceptor pour "
+                "la logique transversale (journalisation, transformation de reponse, cache), les "
+                "Guards pour l'autorisation, les Pipes pour la validation et la transformation "
+                "des donnees, et les Exception Filters pour la gestion centralisee des erreurs. "
+                "Le framework supporte nativement les architectures microservices avec plusieurs "
+                "transporteurs (TCP, Redis, NATS, RabbitMQ, Kafka, gRPC, MQTT). Pour les "
+                "WebSockets, NestJS fournit un module dedie qui fonctionne avec Socket.io ou "
+                "ws. Le module GraphQL integre Apollo Server ou Mercurius et supporte les "
+                "approches schema-first et code-first. L'architecture est concue pour etre "
+                "testable : chaque composant peut etre teste unitairement en mockant ses "
+                "dependances grace au module de test integre."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Architecture opinionnee garantissant la consistance du code en equipe",
+                    "Injection de dependances native facilitant les tests unitaires",
+                    "TypeScript natif avec exploitation maximale du typage statique",
+                    "Ecosysteme riche de modules officiels (GraphQL, WebSockets, microservices)",
+                    "Compatible avec Express et Fastify comme moteur HTTP sous-jacent",
+                    "Documentation officielle extremement complete et bien organisee"
+                ],
+                "cons": [
+                    "Courbe d'apprentissage significative avec de nombreux concepts a assimiler",
+                    "Verbeux avec beaucoup de boilerplate (decorateurs, modules, providers)",
+                    "Surcharge architecturale pour les petits projets ou prototypes",
+                    "Performances legerement inferieures a Express nu a cause des abstractions",
+                    "Dependance forte a TypeScript et aux decorateurs experimentaux",
+                    "La complexite du systeme d'injection peut derouter les debutants"
+                ]
+            },
+            "use_cases": (
+                "NestJS excelle dans le developpement d'applications backend d'entreprise ou la "
+                "maintenabilite, la testabilite et la scalabilite sont prioritaires. Il est "
+                "particulierement adapte aux API REST et GraphQL complexes, aux architectures "
+                "microservices, aux applications temps reel utilisant WebSockets, et aux systemes "
+                "event-driven avec des files d'attente. Les cas d'usage typiques incluent les "
+                "plateformes SaaS multi-tenant, les backends d'applications mobiles, les passerelles "
+                "d'API (API gateways), les systemes de notification en temps reel, et les "
+                "applications de gestion interne. NestJS est un excellent choix pour les equipes "
+                "provenant d'Angular car les concepts architecturaux sont identiques. Il est "
+                "egalement bien adapte aux projets necessitant une documentation d'API automatique "
+                "via Swagger, ou aux equipes qui valorisent une structure de code uniforme. "
+                "Le framework est moins adapte aux scripts simples, aux fonctions serverless "
+                "legeres, ou aux projets ou la minimisation de la taille du bundle est critique. "
+                "Pour les prototypes rapides, Express.js ou Fastify sont souvent preferes "
+                "en raison de leur simplicite de mise en place."
+            ),
+            "ecosystem_size": (
+                "L'ecosysteme de NestJS est l'un des plus riches de l'univers Node.js structure. "
+                "Le framework fournit des modules officiels pour la plupart des besoins courants : "
+                "@nestjs/typeorm et @nestjs/sequelize pour les ORM SQL, @nestjs/mongoose pour "
+                "MongoDB, @nestjs/graphql pour GraphQL (avec Apollo ou Mercurius), @nestjs/swagger "
+                "pour la documentation OpenAPI automatique, @nestjs/websockets pour le temps reel, "
+                "@nestjs/microservices pour les architectures distribuees, @nestjs/bull pour les "
+                "files d'attente basees sur Redis, @nestjs/schedule pour les taches cron, "
+                "@nestjs/throttler pour la limitation de debit, @nestjs/cache pour le cache, "
+                "et @nestjs/config pour la gestion de configuration. Prisma, l'ORM moderne, "
+                "s'integre parfaitement avec NestJS via un module dedie. Pour l'authentification, "
+                "@nestjs/passport integre Passport.js et @nestjs/jwt fournit le support JWT. "
+                "CASL s'integre pour l'autorisation basee sur les capacites. La communaute a "
+                "produit des centaines de bibliotheques supplementaires couvrant des besoins "
+                "specifiques : nestjs-i18n pour l'internationalisation, nestjs-pino pour la "
+                "journalisation performante, nestjs-cls pour le contexte de requete. Le CLI "
+                "de NestJS (@nestjs/cli) genere du code boilerplate et gere les builds. "
+                "L'ecosysteme npm entier est accessible grace a la compatibilite avec Express."
+            ),
+            "companies": [
+                "Adidas", "Roche", "Autodesk", "Decathlon",
+                "Capgemini", "BMW", "Volkswagen", "Sainsbury's"
+            ],
+            "code_example": (
+                "import { Controller, Get, Param, Injectable, Module } from '@nestjs/common';\n"
+                "import { NestFactory } from '@nestjs/core';\n\n"
+                "// Service avec logique metier\n"
+                "@Injectable()\n"
+                "class UsersService {\n"
+                "  private users = [\n"
+                "    { id: 1, nom: 'Alice', email: 'alice@exemple.fr' },\n"
+                "    { id: 2, nom: 'Bob', email: 'bob@exemple.fr' },\n"
+                "  ];\n\n"
+                "  findAll() { return this.users; }\n"
+                "  findOne(id: number) { return this.users.find(u => u.id === id); }\n"
+                "}\n\n"
+                "// Controleur avec injection de dependances\n"
+                "@Controller('users')\n"
+                "class UsersController {\n"
+                "  constructor(private readonly usersService: UsersService) {}\n\n"
+                "  @Get()\n"
+                "  findAll() { return this.usersService.findAll(); }\n\n"
+                "  @Get(':id')\n"
+                "  findOne(@Param('id') id: string) {\n"
+                "    return this.usersService.findOne(+id);\n"
+                "  }\n"
+                "}\n\n"
+                "// Module racine\n"
+                "@Module({\n"
+                "  controllers: [UsersController],\n"
+                "  providers: [UsersService],\n"
+                "})\n"
+                "class AppModule {}\n\n"
+                "// Demarrage de l'application\n"
+                "async function bootstrap() {\n"
+                "  const app = await NestFactory.create(AppModule);\n"
+                "  await app.listen(3000);\n"
+                "}\n"
+                "bootstrap();"
+            ),
+            "performance": {
+                "startup_time": "Moderee (~1-3 secondes). Le scan des modules, la resolution des dependances et la compilation TypeScript ajoutent du temps au demarrage par rapport a Express nu.",
+                "throughput": "Environ 10 000-25 000 requetes/seconde avec Express, 20 000-40 000 avec Fastify comme moteur. La couche d'abstraction ajoute un leger overhead par rapport au framework HTTP brut.",
+                "memory": "Moderee (~50-120 Mo pour une application typique). L'injection de dependances et les metadonnees des decorateurs consomment de la memoire supplementaire par rapport a Express seul.",
+                "concurrency_model": "Herite du modele de Node.js : boucle evenementielle monothread avec E/S asynchrones non-bloquantes. Le pool de threads libuv gere les operations bloquantes. Scalabilite horizontale via le module cluster ou un orchestrateur comme PM2 ou Kubernetes."
+            },
+            "learning_curve": (
+                "La courbe d'apprentissage de NestJS est moderee a elevee, principalement en "
+                "raison du nombre de concepts a maitriser simultanement. Les prerequis incluent "
+                "une bonne connaissance de TypeScript (decorateurs, generiques, types avances), "
+                "de Node.js et des concepts de programmation orientee objet. Les developpeurs "
+                "Angular trouveront les concepts familiers : modules, injection de dependances, "
+                "decorateurs, guards et interceptors sont des patterns identiques. Pour les "
+                "autres, il faut assimiler le systeme de modules et d'encapsulation, le "
+                "conteneur d'injection de dependances, les differents types de providers "
+                "(services, repositories, factories, values), les pipes de validation, les "
+                "guards d'autorisation, les interceptors de transformation, et les filtres "
+                "d'exception. La documentation officielle est un point fort majeur : elle "
+                "est exhaustive, bien structuree et accompagnee de nombreux exemples. Le CLI "
+                "de NestJS genere automatiquement le code boilerplate, accelerant la prise en "
+                "main. Les modules officiels (@nestjs/typeorm, @nestjs/graphql, @nestjs/swagger) "
+                "demandent chacun un apprentissage supplementaire specifique. En general, un "
+                "developpeur TypeScript experimente peut etre productif en deux a quatre semaines. "
+                "La maitrise complete du framework, incluant les microservices, les tests avances "
+                "et les patterns architecturaux, demande trois a six mois de pratique. Les "
+                "developpeurs venant de Spring Boot (Java) ou ASP.NET Core (C#) trouvent la "
+                "transition relativement naturelle grace aux similitudes conceptuelles."
+            ),
+            "community_size": "Tres large et en croissance rapide. Plus de 60 000 etoiles sur GitHub, conferences NestJS officielles, communaute active sur Discord (plus de 30 000 membres), Stack Overflow et Reddit.",
+            "job_market": "En forte croissance. NestJS est de plus en plus demande dans les offres d'emploi Node.js, particulierement pour les postes d'architecte backend et les projets d'entreprise. Les salaires sont competitifs et la demande depasse l'offre de developpeurs experimentes."
+        },
+        "traits": {
+            "performance": 6,
+            "developer_speed": 7,
+            "learning_curve": 5,
+            "ecosystem_size": 7,
+            "type_safety": 8,
+            "concurrency": 6,
+            "memory_safety": 5,
+            "scalability": 8
+        }
+    },
 }

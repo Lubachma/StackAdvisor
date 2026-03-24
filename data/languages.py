@@ -3339,4 +3339,470 @@ TECHNOLOGIES = {
             "scalability": 10
         }
     },
+
+    # =========================================================================
+    # Dart
+    # =========================================================================
+    "dart": {
+        "name": "Dart",
+        "category": "language",
+        "year_created": 2011,
+        "creator": "Google (Lars Bak & Kasper Lund)",
+        "paradigm": ["Oriente Objet", "Fonctionnel", "Imperatif"],
+        "typing": "Statique fort (avec inference de type)",
+        "sections": {
+            "overview": (
+                "Dart est un langage de programmation developpe par Google, concu pour la creation "
+                "d'applications multiplateformes hautes performances. Initialement presente en 2011 "
+                "par Lars Bak et Kasper Lund, deux ingenieurs reconnus pour leur travail sur les "
+                "machines virtuelles (V8 pour JavaScript, HotSpot pour Java), Dart a ete cree avec "
+                "l'ambition de proposer une alternative structuree et performante a JavaScript pour "
+                "le developpement web. Le langage est oriente objet avec un systeme de classes "
+                "unique et un heritage simple, tout en integrant des elements de programmation "
+                "fonctionnelle comme les fonctions de premiere classe, les closures et les "
+                "expressions lambda.\n\n"
+                "Dart se distingue par son systeme de types statique avec inference de type, qui "
+                "permet d'ecrire du code a la fois sur et concis. Depuis Dart 2.12, le langage "
+                "integre la null safety (securite nulle), garantissant a la compilation qu'aucune "
+                "variable non nullable ne contiendra de valeur nulle, eliminant ainsi une classe "
+                "entiere de bugs a l'execution. Le langage supporte la programmation asynchrone "
+                "de maniere native via les mots-cles async/await et les Futures, ainsi que la "
+                "programmation reactive via les Streams.\n\n"
+                "L'essor majeur de Dart est indissociable de Flutter, le framework d'interface "
+                "utilisateur multiplateforme de Google lance en 2017. Flutter utilise Dart comme "
+                "langage exclusif et exploite ses capacites de compilation AOT (ahead-of-time) "
+                "pour generer du code natif performant sur mobile (iOS, Android), desktop "
+                "(Windows, macOS, Linux) et web. Cette synergie entre Dart et Flutter a "
+                "considerablement relance l'interet pour le langage, le placant parmi les "
+                "langages a la croissance la plus rapide ces dernieres annees. Dart peut etre "
+                "compile en code machine natif via dart compile, transpile en JavaScript pour "
+                "le web, ou execute sur la machine virtuelle Dart pour le developpement et les "
+                "scripts cote serveur."
+            ),
+            "history": (
+                "L'histoire de Dart debute en 2011 lorsque Google devoile le langage lors de "
+                "la conference GOTO a Aarhus, au Danemark. Lars Bak et Kasper Lund, les "
+                "createurs du langage, avaient pour objectif de concevoir un langage qui "
+                "remplacerait JavaScript comme langage principal du web, tout en corrigeant "
+                "ses defauts fondamentaux lies au typage dynamique et a la conception initiale "
+                "du langage. Google avait meme prevu d'integrer une machine virtuelle Dart "
+                "directement dans Chrome (le projet Dartium), mais cette idee a ete abandonnee "
+                "en 2015 au profit de la compilation vers JavaScript.\n\n"
+                "Dart 1.0, sorti en novembre 2013, etablit les bases du langage avec un systeme "
+                "de types optionnel, une bibliotheque standard complete et un compilateur vers "
+                "JavaScript (dart2js). Cependant, l'adoption initiale reste limitee, le langage "
+                "peinant a convaincre face a l'ecosysteme JavaScript etabli et aux avancees de "
+                "TypeScript. La periode 2014-2017 est souvent consideree comme les annees "
+                "difficiles de Dart, ou le langage semblait destine a l'oubli.\n\n"
+                "Le tournant decisif arrive en 2017 avec l'annonce de Flutter, qui choisit Dart "
+                "comme langage de developpement. Ce choix, initialement critique, s'avere "
+                "strategique : Dart offre a Flutter la compilation AOT pour les performances "
+                "de production et la compilation JIT pour le rechargement a chaud (hot reload) "
+                "en developpement. Dart 2.0, sorti en 2018, introduit un systeme de types "
+                "statique obligatoire, marquant une rupture avec le typage optionnel de Dart 1. "
+                "Dart 2.12 (2021) apporte la null safety, une avancee majeure pour la surete "
+                "du code. Dart 3.0 (2023) rend la null safety obligatoire, introduit les records, "
+                "les patterns et les class modifiers, modernisant significativement le langage. "
+                "Dart 3.2 et les versions suivantes continuent d'ameliorer les performances, "
+                "l'interoperabilite et l'experience developpeur."
+            ),
+            "architecture": (
+                "L'architecture de Dart repose sur plusieurs composants qui permettent une grande "
+                "flexibilite d'execution. Le langage peut fonctionner selon trois modes principaux : "
+                "execution sur la machine virtuelle Dart (DartVM), compilation ahead-of-time (AOT) "
+                "en code machine natif, et compilation en JavaScript pour le web. La DartVM utilise "
+                "un compilateur JIT (just-in-time) qui compile le code Dart en code machine au "
+                "moment de l'execution, permettant le rechargement a chaud (hot reload) utilise "
+                "intensivement pendant le developpement Flutter.\n\n"
+                "Le systeme de types de Dart est statique et fort, avec une inference de types "
+                "locale qui reduit la verbosité tout en maintenant la surete. Le langage utilise "
+                "un modele de programmation oriente objet pur ou tout est un objet, y compris les "
+                "nombres et les fonctions. L'heritage est simple (une seule classe parente) mais "
+                "Dart supporte les mixins, les interfaces implicites (chaque classe definit une "
+                "interface) et les extensions de type, offrant une grande souplesse dans la "
+                "composition du code.\n\n"
+                "Le modele de concurrence de Dart est base sur les Isolates, des unites d'execution "
+                "independantes qui ne partagent pas de memoire. Chaque Isolate possede son propre "
+                "tas memoire et communique avec les autres via un systeme de messages (ports). Ce "
+                "modele elimine les problemes classiques de concurrence comme les race conditions "
+                "et les deadlocks, au prix d'une communication inter-Isolates plus explicite. Au "
+                "sein d'un meme Isolate, la programmation asynchrone est geree par une boucle "
+                "evenementielle (event loop) et les Futures/Streams, similaire au modele de "
+                "Node.js. Le ramasse-miettes (garbage collector) de Dart est generationnel et "
+                "concurrent, optimise pour les applications avec interface graphique ou les pauses "
+                "de garbage collection doivent etre minimales pour maintenir une frequence de "
+                "rafraichissement de 60 ou 120 images par seconde."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Null safety integree au systeme de types, eliminant les erreurs de reference nulle",
+                    "Compilation AOT et JIT offrant performances en production et hot reload en developpement",
+                    "Syntaxe claire et familiere pour les developpeurs venant de Java, C# ou TypeScript",
+                    "Modele de concurrence base sur les Isolates, sans partage de memoire",
+                    "Ecosysteme Flutter permettant le developpement multiplateforme depuis une seule base de code",
+                    "Programmation asynchrone native avec async/await, Futures et Streams",
+                    "Outillage excellent avec analyseur statique, formateur et gestionnaire de paquets integres",
+                    "Documentation officielle de grande qualite et tutoriels interactifs"
+                ],
+                "cons": [
+                    "Ecosysteme tres dependant de Flutter, peu d'utilisation en dehors du mobile et du web",
+                    "Communaute plus petite que celles de JavaScript, Python ou Java",
+                    "Adoption cote serveur limitee malgre les capacites du langage",
+                    "Perception d'un langage 'niche' lie uniquement a Flutter dans l'esprit de beaucoup",
+                    "Moins de bibliotheques tierces que les ecosystemes matures comme npm ou PyPI",
+                    "L'historique mouvemente du langage (abandon de Dartium, changements de direction) peut susciter la mefiance",
+                    "Les performances JavaScript compilees par dart2js restent inferieures au JavaScript natif optimise",
+                    "Le modele d'Isolates peut complexifier la communication entre threads pour les cas d'utilisation avances"
+                ]
+            },
+            "use_cases": (
+                "Le cas d'utilisation principal de Dart est le developpement d'applications "
+                "multiplateformes avec Flutter. Cette combinaison permet de creer des applications "
+                "mobiles (iOS et Android), des applications de bureau (Windows, macOS, Linux) et "
+                "des applications web a partir d'une seule base de code. Les applications Flutter "
+                "en Dart offrent des performances proches du natif grace a la compilation AOT et "
+                "un rendu graphique direct via le moteur Skia (ou Impeller dans les versions "
+                "recentes), sans passer par les composants natifs de la plateforme.\n\n"
+                "Dart est egalement utilise pour le developpement cote serveur, bien que cette "
+                "utilisation reste minoritaire. Les frameworks comme Shelf, Dart Frog et Serverpod "
+                "permettent de construire des API REST et des microservices en Dart. L'avantage "
+                "est le partage de code entre le client Flutter et le serveur Dart, reduisant la "
+                "duplication de la logique metier et des modeles de donnees.\n\n"
+                "Les applications d'entreprise representent un segment croissant pour Dart et "
+                "Flutter, avec des cas d'utilisation dans la banque, l'assurance, la sante et "
+                "le commerce de detail. Des entreprises comme Google (Google Pay, Google Ads), "
+                "BMW, Toyota, Alibaba et Nubank utilisent Flutter et Dart en production. Le "
+                "developpement d'outils en ligne de commande (CLI), de scripts d'automatisation "
+                "et de generateurs de code est un autre cas d'utilisation ou Dart excelle grace "
+                "a son temps de demarrage rapide en mode compile et sa bibliotheque standard "
+                "riche en utilitaires pour la manipulation de fichiers et de processus."
+            ),
+            "ecosystem": (
+                "L'ecosysteme Dart est structure autour de pub.dev, le depot officiel de paquets "
+                "qui heberge plus de 40 000 packages. Le gestionnaire de paquets pub est integre "
+                "au SDK Dart et gere les dependances, la resolution de versions et la publication "
+                "de packages. Les packages les plus populaires sont lies a Flutter (provider, "
+                "riverpod, bloc, dio, freezed, json_serializable), mais l'ecosysteme inclut "
+                "egalement des bibliotheques pour le developpement serveur, les outils CLI et "
+                "le traitement de donnees.\n\n"
+                "L'outillage Dart est remarquable pour sa qualite et son integration. Le SDK "
+                "inclut un analyseur statique (dart analyze) qui detecte les erreurs, les "
+                "problemes de style et les violations des bonnes pratiques. Le formateur de "
+                "code (dart format) impose un style uniforme. Le compilateur (dart compile) "
+                "produit des executables natifs autonomes. Les IDE principaux pour Dart sont "
+                "Visual Studio Code (avec l'extension Dart), Android Studio et IntelliJ IDEA. "
+                "Le debogage est supporte via le Dart DevTools, une suite d'outils de profilage "
+                "et de debogage disponible dans le navigateur. Pour les tests, le package test "
+                "officiel fournit un framework complet avec tests unitaires, tests de widgets "
+                "(Flutter) et tests d'integration. Le framework de build build_runner permet "
+                "la generation de code a la compilation, utilisee extensivement pour la "
+                "serialisation JSON, l'injection de dependances et la generation de mocks."
+            ),
+            "companies": [
+                "Google (Google Pay, Google Ads, Stadia, outils internes)",
+                "BMW (application My BMW)",
+                "Alibaba (Xianyu, marketplace de seconde main)",
+                "Nubank (application bancaire, plus de 70 millions d'utilisateurs)",
+                "Toyota (systemes d'info-divertissement)",
+                "ByteDance (TikTok, outils internes)",
+                "Tencent (applications internes et jeux)",
+                "Philips (applications sante connectee)"
+            ],
+            "code_example": (
+                "// Exemple Dart : gestion d'etudiants avec null safety\n\n"
+                "class Etudiant {\n"
+                "  final String nom;\n"
+                "  final int age;\n"
+                "  final List<double> notes;\n\n"
+                "  const Etudiant({\n"
+                "    required this.nom,\n"
+                "    required this.age,\n"
+                "    required this.notes,\n"
+                "  });\n\n"
+                "  double? get moyenne {\n"
+                "    if (notes.isEmpty) return null;\n"
+                "    return notes.reduce((a, b) => a + b) / notes.length;\n"
+                "  }\n\n"
+                "  String get mention {\n"
+                "    final moy = moyenne;\n"
+                "    if (moy == null) return 'Aucune note';\n"
+                "    return switch (moy) {\n"
+                "      >= 16 => 'Tres bien',\n"
+                "      >= 14 => 'Bien',\n"
+                "      >= 12 => 'Assez bien',\n"
+                "      >= 10 => 'Passable',\n"
+                "      _ => 'Insuffisant',\n"
+                "    };\n"
+                "  }\n\n"
+                "  @override\n"
+                "  String toString() => 'Etudiant($nom, age: $age, moyenne: "
+                "${moyenne?.toStringAsFixed(2) ?? \"N/A\"}';\n"
+                "}\n\n"
+                "Future<List<Etudiant>> chargerEtudiants() async {\n"
+                "  // Simulation d'un chargement asynchrone\n"
+                "  await Future.delayed(Duration(milliseconds: 100));\n"
+                "  return [\n"
+                "    Etudiant(nom: 'Alice', age: 21, notes: [15.5, 14.0, 16.5]),\n"
+                "    Etudiant(nom: 'Bob', age: 22, notes: [8.0, 9.5, 7.0]),\n"
+                "    Etudiant(nom: 'Claire', age: 20, notes: [18.0, 17.5, 19.0]),\n"
+                "  ];\n"
+                "}\n\n"
+                "void main() async {\n"
+                "  final etudiants = await chargerEtudiants();\n"
+                "  final palmares = etudiants\n"
+                "    .where((e) => (e.moyenne ?? 0) >= 10)\n"
+                "    .toList()\n"
+                "    ..sort((a, b) => (b.moyenne ?? 0).compareTo(a.moyenne ?? 0));\n\n"
+                "  for (final e in palmares) {\n"
+                "    print('${e.nom}: ${e.moyenne?.toStringAsFixed(2)} - ${e.mention}');\n"
+                "  }\n"
+                "}"
+            ),
+            "performance": {
+                "startup_time": "Rapide en AOT, moyen en JIT (DartVM)",
+                "throughput": "Bon (comparable a Java/C#, inferieur a C/C++/Rust)",
+                "memory": "Moyen (garbage collector generationnel, overhead objet)",
+                "concurrency_model": "Isolates (pas de memoire partagee), event loop, Futures/Streams"
+            },
+            "learning_curve": "Faible a moderee (syntaxe familiere pour les developpeurs Java/C#/TypeScript)",
+            "community_size": "Moyenne (en forte croissance grace a Flutter)",
+            "job_market": "En croissance (fort pour Flutter mobile, limite pour le back-end)"
+        },
+        "traits": {
+            "performance": 7,
+            "developer_speed": 7,
+            "learning_curve": 3,
+            "ecosystem_size": 6,
+            "type_safety": 8,
+            "concurrency": 6,
+            "memory_safety": 7,
+            "scalability": 7
+        }
+    },
+
+    # =========================================================================
+    # Zig
+    # =========================================================================
+    "zig": {
+        "name": "Zig",
+        "category": "language",
+        "year_created": 2015,
+        "creator": "Andrew Kelley",
+        "paradigm": ["Imperatif", "Systeme", "Procedural"],
+        "typing": "Statique fort (compile-time)",
+        "sections": {
+            "overview": (
+                "Zig est un langage de programmation systeme cree par Andrew Kelley en 2015, "
+                "concu comme une alternative moderne au C et au C++. Son objectif fondamental est "
+                "de fournir un langage systeme qui soit simple, lisible et maintenable, tout en "
+                "offrant des performances comparables au C sans les pieges de securite qui lui sont "
+                "associes. Zig ne possede ni macros ni metaprogrammation textuelle, ni heritage "
+                "oriente objet, ni exceptions cachees. Chaque fonctionnalite du langage est conçue "
+                "pour etre explicite et previsible, ce qui facilite la lecture et la comprehension "
+                "du code.\n\n"
+                "L'une des caracteristiques les plus distinctives de Zig est sa capacite de calcul "
+                "a la compilation (comptime). Le systeme comptime permet d'executer du code "
+                "arbitraire Zig au moment de la compilation, offrant les avantages de la "
+                "metaprogrammation et de la generique sans complexite syntaxique supplementaire. "
+                "Les types generiques, la generation de code et les optimisations qui necessitent "
+                "des templates en C++ ou des macros en C sont resolus en Zig par du code normal "
+                "execute a la compilation.\n\n"
+                "Zig se distingue egalement par son interoperabilite exceptionnelle avec le C et "
+                "le C++. Le compilateur Zig peut compiler du code C et C++ directement, et les "
+                "fichiers d'en-tete C peuvent etre importes nativement sans ecrire de bindings "
+                "manuels. Le systeme de build de Zig, ecrit en Zig lui-meme, remplace avantageusement "
+                "CMake, Make et autotools pour les projets systeme. La toolchain Zig inclut un "
+                "cross-compilateur integre capable de cibler plus de 30 architectures et systemes "
+                "d'exploitation, ce qui en fait un outil de choix pour le developpement embarque "
+                "et multiplateforme. Le langage integre egalement un allocateur memoire explicite, "
+                "ou chaque fonction qui alloue de la memoire recoit un allocateur en parametre, "
+                "rendant la gestion memoire transparente et testable."
+            ),
+            "history": (
+                "L'histoire de Zig commence en 2015 lorsque Andrew Kelley, frustre par les "
+                "complexites et les incoherences du C et du C++, commence a concevoir un nouveau "
+                "langage systeme. Kelley avait travaille sur des projets impliquant des systemes "
+                "de build complexes et du code C/C++ difficile a maintenir, et souhaitait creer "
+                "un langage qui resoudrait ces problemes de maniere elegante. La premiere version "
+                "publique de Zig est publiee sur GitHub en 2016, attirant l'attention de la "
+                "communaute des programmeurs systeme.\n\n"
+                "Les premieres annees (2016-2019) sont consacrees a la conception du langage et "
+                "du compilateur bootstrap, ecrit en C++. Le compilateur auto-heberge (ecrit en "
+                "Zig lui-meme) est un objectif a long terme qui progresse en parallele. Durant "
+                "cette periode, Zig attire l'attention d'acteurs majeurs de l'industrie. En 2020, "
+                "la Zig Software Foundation est creee en tant qu'organisation a but non lucratif "
+                "pour soutenir le developpement du langage. Des entreprises comme Uber commencent "
+                "a utiliser Zig en production pour leur infrastructure systeme.\n\n"
+                "L'annee 2021 marque un tournant avec l'obtention d'un financement par la fondation "
+                "et une attention mediatique croissante. En 2022, Bun, un runtime JavaScript ecrit "
+                "en Zig, est devoile et fait sensation dans la communaute web par ses performances "
+                "exceptionnelles, prouvant la viabilite de Zig pour des projets de grande envergure. "
+                "TigerBeetle, une base de donnees financiere ecrite en Zig, est un autre projet "
+                "phare. En 2023-2024, le travail sur le compilateur auto-heberge (stage 3) "
+                "progresse significativement, promettant des temps de compilation encore plus "
+                "rapides et l'elimination de la dependance a LLVM pour le backend. Zig n'a pas "
+                "encore atteint la version 1.0, ce qui signifie que le langage peut encore "
+                "connaitre des changements significatifs, mais sa communaute et son ecosysteme "
+                "grandissent rapidement."
+            ),
+            "architecture": (
+                "L'architecture de Zig est concue autour de principes de simplicite et d'explicite. "
+                "Le langage est compile et produit du code machine natif via LLVM (backend principal) "
+                "ou via son propre backend en cours de developpement. Le processus de compilation "
+                "se deroule en plusieurs phases : analyse lexicale, parsing en AST, analyse "
+                "semantique avec resolution du comptime, generation de ZIR (Zig Intermediate "
+                "Representation), puis generation de code via LLVM IR ou le backend natif.\n\n"
+                "Le systeme de types de Zig est statique et fort, avec des types entiers de taille "
+                "arbitraire (u7, i13, u256), des types flottants, des pointeurs, des tableaux, "
+                "des slices, des structures, des unions et des enumerations. Les pointeurs en Zig "
+                "sont plus riches qu'en C : il existe des pointeurs simples (*T), des pointeurs "
+                "many-item ([*]T), des slices ([]T), et des pointeurs optionnels (?*T). Cette "
+                "granularite permet au compilateur de detecter davantage d'erreurs et d'optimiser "
+                "plus agressivement.\n\n"
+                "Le systeme comptime est le coeur de la metaprogrammation en Zig. Il permet "
+                "d'executer n'importe quelle expression Zig au moment de la compilation, y compris "
+                "des boucles, des conditions et des appels de fonctions. Les types sont des valeurs "
+                "de premiere classe en comptime, ce qui signifie qu'une fonction peut prendre un "
+                "type en parametre et retourner un type, permettant la generique sans syntaxe "
+                "speciale. La gestion memoire en Zig est entierement explicite : il n'y a pas de "
+                "ramasse-miettes ni d'allocation implicite. Chaque allocation est effectuee via un "
+                "allocateur passe explicitement, ce qui facilite le suivi de la memoire, les tests "
+                "et le remplacement de l'allocateur selon le contexte (test, production, embarque). "
+                "Les erreurs sont gerees via un type error union (T!E) et le mot-cle try, similaire "
+                "a Rust mais sans la complexite du systeme d'ownership. Le defer et l'errdefer "
+                "garantissent le nettoyage des ressources de maniere deterministe."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Interoperabilite C et C++ exceptionnelle, import direct des fichiers d'en-tete",
+                    "Systeme comptime puissant remplacant macros et templates par du code Zig normal",
+                    "Gestion memoire explicite et transparente via les allocateurs parametrables",
+                    "Cross-compilation integree vers plus de 30 cibles sans configuration externe",
+                    "Pas de comportement indefini (contrairement au C), erreurs detectees a la compilation ou a l'execution",
+                    "Systeme de build integre remplacant CMake, Make et autotools",
+                    "Code lisible et explicite sans sucre syntaxique cache",
+                    "Performances comparables au C avec une meilleure securite"
+                ],
+                "cons": [
+                    "Langage pas encore en version 1.0, API et fonctionnalites pouvant encore changer",
+                    "Ecosysteme de bibliotheques encore petit et immature",
+                    "Courbe d'apprentissage elevee pour les developpeurs venant de langages de haut niveau",
+                    "Peu de ressources d'apprentissage comparees aux langages etablis (livres, cours, tutoriels)",
+                    "Gestion memoire manuelle requise, pas de garbage collector",
+                    "Le marche de l'emploi pour Zig est encore tres limite",
+                    "Certaines fonctionnalites du compilateur ne sont pas encore stabilisees",
+                    "Communaute petite bien qu'en croissance rapide"
+                ]
+            },
+            "use_cases": (
+                "Zig excelle dans la programmation systeme de bas niveau, ou le controle des "
+                "performances et de la memoire est critique. Les cas d'utilisation principaux "
+                "incluent le developpement de systemes d'exploitation, de pilotes de peripheriques, "
+                "de systemes embarques et de firmware. Le langage est particulierement adapte aux "
+                "environnements ou la previsibilite de l'allocation memoire et la latence sont "
+                "des exigences fondamentales.\n\n"
+                "L'interoperabilite C exceptionnelle de Zig en fait un choix ideal pour moderniser "
+                "progressivement des bases de code C existantes. Les developpeurs peuvent integrer "
+                "du code Zig dans des projets C et vice-versa sans friction, permettant une "
+                "migration incrementale vers un langage plus sur. La toolchain Zig est egalement "
+                "utilisee comme cross-compilateur C/C++ meme par des projets qui n'utilisent pas "
+                "le langage Zig lui-meme, grace a sa capacite de cross-compilation superieure.\n\n"
+                "Les infrastructures logicielles hautes performances representent un autre cas "
+                "d'utilisation majeur. Bun, le runtime JavaScript ecrit en Zig, demontre les "
+                "performances atteignables dans ce domaine. TigerBeetle, une base de donnees "
+                "financiere concue pour traiter des millions de transactions par seconde, est "
+                "ecrite en Zig. Les moteurs de jeux video, les systemes de rendu graphique, les "
+                "bibliotheques de calcul scientifique et les outils de traitement de donnees "
+                "massif sont egalement des domaines ou Zig peut apporter des gains significatifs. "
+                "Le developpement d'outils de developpement (compilateurs, linters, formateurs) "
+                "est un autre domaine naturel pour Zig, ou la performance et la fiabilite sont "
+                "primordiales."
+            ),
+            "ecosystem": (
+                "L'ecosysteme de Zig est encore jeune mais en croissance rapide, soutenu par "
+                "une communaute passionnee et des projets phares qui prouvent la viabilite du "
+                "langage. Le systeme de build de Zig sert egalement de gestionnaire de paquets, "
+                "permettant d'integrer des dependances Zig et C directement dans un projet. "
+                "Le registre de paquets principal est le Zig Package Index, mais de nombreuses "
+                "dependances sont simplement hebergees sur GitHub et referencees par URL dans "
+                "le build.zig.\n\n"
+                "Les bibliotheques notables incluent la bibliotheque standard de Zig, qui est "
+                "remarquablement complete pour un langage aussi jeune, couvrant les operations "
+                "sur les fichiers, le reseau, le threading, la compression, la cryptographie et "
+                "les structures de donnees. Pour les interfaces graphiques, des bindings pour "
+                "raylib, SDL et Dear ImGui sont disponibles. Les projets phares de l'ecosysteme "
+                "incluent Bun (runtime JavaScript), TigerBeetle (base de donnees financiere), "
+                "Mach (moteur de jeu), et River (proxy HTTP reverse). Les outils de developpement "
+                "incluent ZLS (Zig Language Server) pour l'integration IDE, et le compilateur Zig "
+                "lui-meme qui integre un formateur de code (zig fmt). La communaute est active "
+                "sur le forum officiel Ziggit, le serveur Discord, et GitHub. La Zig Software "
+                "Foundation coordonne le developpement et organise les evenements communautaires."
+            ),
+            "companies": [
+                "Uber (infrastructure systeme, cross-compilation)",
+                "Bun (runtime JavaScript ecrit entierement en Zig)",
+                "TigerBeetle (base de donnees financiere)",
+                "Roc (langage de programmation utilisant Zig pour le backend)",
+                "Turso (base de donnees distribuee, integration Zig)",
+                "Loris (outils d'infrastructure)",
+                "Coil (outils de developpement)"
+            ],
+            "code_example": (
+                "const std = @import(\"std\");\n\n"
+                "const Etudiant = struct {\n"
+                "    nom: []const u8,\n"
+                "    age: u8,\n"
+                "    notes: []const f64,\n\n"
+                "    fn moyenne(self: Etudiant) ?f64 {\n"
+                "        if (self.notes.len == 0) return null;\n"
+                "        var somme: f64 = 0;\n"
+                "        for (self.notes) |note| {\n"
+                "            somme += note;\n"
+                "        }\n"
+                "        return somme / @as(f64, @floatFromInt(self.notes.len));\n"
+                "    }\n\n"
+                "    fn mention(self: Etudiant) []const u8 {\n"
+                "        const moy = self.moyenne() orelse return \"Aucune note\";\n"
+                "        if (moy >= 16) return \"Tres bien\";\n"
+                "        if (moy >= 14) return \"Bien\";\n"
+                "        if (moy >= 12) return \"Assez bien\";\n"
+                "        if (moy >= 10) return \"Passable\";\n"
+                "        return \"Insuffisant\";\n"
+                "    }\n"
+                "};\n\n"
+                "pub fn main() !void {\n"
+                "    const stdout = std.io.getStdOut().writer();\n\n"
+                "    const etudiants = [_]Etudiant{\n"
+                "        .{ .nom = \"Alice\", .age = 21, .notes = &[_]f64{ 15.5, 14.0, 16.5 } },\n"
+                "        .{ .nom = \"Bob\", .age = 22, .notes = &[_]f64{ 8.0, 9.5, 7.0 } },\n"
+                "        .{ .nom = \"Claire\", .age = 20, .notes = &[_]f64{ 18.0, 17.5, 19.0 } },\n"
+                "    };\n\n"
+                "    for (&etudiants) |e| {\n"
+                "        if (e.moyenne()) |moy| {\n"
+                "            try stdout.print(\"{s}: {d:.2} - {s}\\n\", .{ e.nom, moy, e.mention() });\n"
+                "        }\n"
+                "    }\n"
+                "}"
+            ),
+            "performance": {
+                "startup_time": "Tres rapide (pas de runtime, compilation native)",
+                "throughput": "Tres eleve (comparable au C, optimisations LLVM)",
+                "memory": "Tres faible (controle manuel, pas de GC, pas d'allocations cachees)",
+                "concurrency_model": "Threads OS, async/await cooperatif (sans allocateur), io_uring"
+            },
+            "learning_curve": "Elevee (gestion memoire manuelle, concepts comptime, paradigme systeme)",
+            "community_size": "Petite (en forte croissance, communaute engagee et passionnee)",
+            "job_market": "Niche (emergence, postes rares mais en croissance dans l'infrastructure)"
+        },
+        "traits": {
+            "performance": 9,
+            "developer_speed": 4,
+            "learning_curve": 7,
+            "ecosystem_size": 3,
+            "type_safety": 8,
+            "concurrency": 7,
+            "memory_safety": 8,
+            "scalability": 7
+        }
+    },
 }

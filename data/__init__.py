@@ -7,6 +7,8 @@ from data.mobile import TECHNOLOGIES as MOBILE
 from data.databases import TECHNOLOGIES as DB
 from data.desktop import TECHNOLOGIES as DESK
 from data.devops import TECHNOLOGIES as DEVOPS
+from data.game_engines import TECHNOLOGIES as GAME
+from data.ml import TECHNOLOGIES as ML
 
 # Registre par nom de categorie (pour le navigateur)
 REGISTRY = {
@@ -17,6 +19,8 @@ REGISTRY = {
     "Bases de Donnees": DB,
     "Frameworks Desktop": DESK,
     "Outils DevOps": DEVOPS,
+    "Moteurs de Jeu": GAME,
+    "Frameworks ML / IA": ML,
 }
 
 

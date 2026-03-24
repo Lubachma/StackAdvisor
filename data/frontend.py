@@ -1336,4 +1336,287 @@ TECHNOLOGIES = {
             "scalability": 9,
         },
     },
+
+    # =========================================================================
+    # Nuxt.js
+    # =========================================================================
+    "nuxtjs": {
+        "name": "Nuxt.js",
+        "category": "frontend",
+        "year_created": 2016,
+        "creator": "Sebastien & Alexandre Chopin",
+        "paradigm": ["Composant", "Declaratif", "SSR/SSG"],
+        "typing": "JavaScript/TypeScript",
+        "sections": {
+            "overview": (
+                "Nuxt.js est un framework open source base sur Vue.js, concu pour simplifier "
+                "le developpement d'applications web universelles (server-side rendering), "
+                "de sites statiques (static site generation) et d'applications monopages (SPA). "
+                "Cree par Sebastien et Alexandre Chopin en 2016, Nuxt s'inspire directement de "
+                "Next.js dans l'ecosysteme React, en proposant une approche conventionnelle et "
+                "opiniatree du developpement Vue.js. Le framework fournit une structure de projet "
+                "claire, un systeme de routage automatique base sur l'arborescence des fichiers, "
+                "et une configuration minimale grace a des conventions intelligentes.\n\n"
+                "Nuxt abstrait la complexite de la configuration de webpack, Vite, Vue Router et "
+                "du rendu cote serveur, permettant aux developpeurs de se concentrer sur la logique "
+                "metier plutot que sur la plomberie technique. Le framework supporte nativement le "
+                "rendu hybride, ou chaque route peut individuellement etre configuree pour le SSR, "
+                "le SSG, le SPA ou meme le rendu cote serveur uniquement (server-only). Cette "
+                "flexibilite permet d'adapter la strategie de rendu aux besoins specifiques de "
+                "chaque page de l'application.\n\n"
+                "Depuis Nuxt 3, le framework repose entierement sur Vue 3 et son API Composition, "
+                "offrant un systeme de reactivite ameliore, des performances accrues et un support "
+                "natif de TypeScript. Le moteur Nitro, developpe specifiquement pour Nuxt 3, fournit "
+                "un serveur leger et universel qui peut etre deploye sur pratiquement toutes les "
+                "plateformes : Node.js, Deno, Cloudflare Workers, Vercel, Netlify et bien d'autres. "
+                "Nuxt propose egalement un systeme de modules extremement puissant qui permet "
+                "d'etendre les fonctionnalites du framework de maniere modulaire et reutilisable, "
+                "avec plus de 200 modules communautaires couvrant des besoins varies comme "
+                "l'authentification, le SEO, l'internationalisation et l'integration de CMS headless."
+            ),
+            "history": (
+                "L'histoire de Nuxt.js commence fin 2016 lorsque Sebastien Chopin, inspire par "
+                "Next.js dans l'ecosysteme React, decide de creer un equivalent pour Vue.js. "
+                "Avec son frere Alexandre, ils developpent un framework capable de generer des "
+                "applications Vue.js avec rendu cote serveur de maniere simple et opiniatree. "
+                "La premiere version stable de Nuxt (1.0) est publiee en janvier 2018, apportant "
+                "le routage automatique, le support SSR et SSG, ainsi qu'un systeme de middleware "
+                "et de layouts.\n\n"
+                "Nuxt 2, sorti en septembre 2018, a marque une etape majeure avec une refonte "
+                "complete du coeur du framework, un mecanisme de modules ameliore, le support de "
+                "webpack 4, et une meilleure gestion des erreurs. Cette version a propulse Nuxt "
+                "au rang de framework incontournable dans l'ecosysteme Vue.js, adopte par de "
+                "nombreuses entreprises pour leurs sites institutionnels, e-commerce et applications "
+                "web. Le module @nuxt/content a popularise l'utilisation de Nuxt comme generateur "
+                "de sites statiques orientee contenu.\n\n"
+                "Nuxt 3, annonce en 2021 et publie en version stable en novembre 2022, represente "
+                "une reecriture complete du framework. Base sur Vue 3 et son API Composition, il "
+                "introduit le moteur serveur Nitro, le support natif de TypeScript, un nouveau "
+                "systeme de build base sur Vite, les composants auto-importes, et un systeme de "
+                "rendu hybride permettant de configurer la strategie de rendu par route. Nuxt 3 "
+                "beneficie egalement d'un DevTools integre offrant une visibilite complete sur "
+                "l'etat de l'application, les routes, les composants et les modules. Le framework "
+                "continue d'evoluer avec des mises a jour regulieres, renforçant son ecosysteme "
+                "et son integration avec les plateformes de deploiement modernes."
+            ),
+            "architecture": (
+                "L'architecture de Nuxt.js repose sur plusieurs couches qui travaillent ensemble "
+                "pour offrir une experience de developpement fluide et des performances optimales. "
+                "Au coeur du framework se trouve Vue.js, qui gere le systeme de composants, la "
+                "reactivite et le rendu de l'interface. Au-dessus, Nuxt ajoute une couche de "
+                "conventions et d'abstractions qui structurent le projet et automatisent de "
+                "nombreuses taches de configuration.\n\n"
+                "Le systeme de routage de Nuxt est base sur le systeme de fichiers : chaque fichier "
+                "Vue place dans le repertoire pages/ genere automatiquement une route correspondante. "
+                "Les routes dynamiques sont definies par des crochets dans le nom du fichier "
+                "(par exemple [id].vue), et les routes imbriquees suivent la hierarchie des "
+                "repertoires. Ce systeme elimine le besoin de configurer manuellement Vue Router "
+                "et garantit une correspondance claire entre la structure du projet et les URLs "
+                "de l'application.\n\n"
+                "Le moteur Nitro, introduit dans Nuxt 3, est un serveur universel qui gere le "
+                "rendu cote serveur, les routes API et le pre-rendu statique. Nitro compile le "
+                "code serveur en un bundle optimise qui peut etre deploye sur de multiples cibles "
+                "(Node.js, workers edge, serverless). Il utilise un systeme de stockage abstrait "
+                "(unstorage) pour le cache et les donnees, et un systeme de routes API basees sur "
+                "les fichiers dans le repertoire server/. Le rendu hybride permet de definir des "
+                "regles de rendu par route : certaines pages peuvent etre pre-rendues a la "
+                "construction, d'autres rendues cote serveur a chaque requete, et d'autres encore "
+                "fonctionner comme une SPA classique. Les composables Nuxt (useAsyncData, useFetch, "
+                "useState, useHead) fournissent une API reactive et isomorphe pour la gestion des "
+                "donnees, de l'etat et des metadonnees, fonctionnant de maniere transparente aussi "
+                "bien cote serveur que cote client."
+            ),
+            "pros_cons": {
+                "pros": [
+                    "Configuration minimale grace aux conventions intelligentes et aux auto-imports",
+                    "Rendu hybride flexible (SSR, SSG, SPA, ISR) configurable par route",
+                    "Moteur Nitro performant et deployable sur toutes les plateformes modernes",
+                    "Systeme de modules riche avec plus de 200 modules communautaires",
+                    "Support natif de TypeScript avec inference de types avancee",
+                    "Routage automatique base sur le systeme de fichiers, intuitif et productif",
+                    "DevTools integre offrant une visibilite complete sur l'application",
+                    "Excellente integration avec l'ecosysteme Vue.js et ses bibliotheques",
+                ],
+                "cons": [
+                    "Courbe d'apprentissage liee a la comprehension des multiples modes de rendu",
+                    "Les conventions strictes peuvent etre contraignantes pour les projets atypiques",
+                    "Ecosysteme de modules moins vaste que celui de Next.js dans l'univers React",
+                    "La transition de Nuxt 2 a Nuxt 3 a ete longue et a fragmente la communaute",
+                    "La documentation peut manquer d'exemples avances pour les cas d'utilisation complexes",
+                    "Le debogage des problemes d'hydratation SSR reste un defi technique",
+                    "Certains modules communautaires ne sont pas encore portes vers Nuxt 3",
+                ],
+            },
+            "use_cases": (
+                "Nuxt.js excelle dans le developpement de sites web necessitant un bon "
+                "referencement naturel (SEO), comme les sites institutionnels, les blogs, les "
+                "magazines en ligne et les sites e-commerce. Grace au SSR et au SSG, les pages "
+                "sont indexables par les moteurs de recherche et offrent un temps d'affichage "
+                "initial rapide, ameliorant l'experience utilisateur et le classement SEO.\n\n"
+                "Les plateformes e-commerce beneficient particulierement de Nuxt grace au rendu "
+                "hybride : les pages produits peuvent etre pre-rendues statiquement pour des "
+                "performances maximales, tandis que le panier et le processus de commande "
+                "fonctionnent en mode SPA interactif. Les sites de contenu et les documentations "
+                "techniques tirent parti du module @nuxt/content pour gerer du contenu en Markdown "
+                "avec un systeme de requetes puissant.\n\n"
+                "Nuxt est egalement adapte aux applications web d'entreprise necessitant une "
+                "architecture claire et maintenable. Les grandes equipes apprecient les conventions "
+                "imposees par le framework, qui garantissent une structure de projet coherente. "
+                "Les applications temps reel, les tableaux de bord et les portails internes "
+                "peuvent tirer parti du mode SPA de Nuxt tout en beneficiant de l'infrastructure "
+                "du framework. Enfin, les applications JAMstack et les sites generes statiquement "
+                "deployes sur des CDN comme Netlify, Vercel ou Cloudflare Pages sont un cas "
+                "d'utilisation tres populaire de Nuxt."
+            ),
+            "ecosystem": (
+                "L'ecosysteme de Nuxt.js s'appuie sur la richesse de l'ecosysteme Vue.js tout "
+                "en ajoutant ses propres outils et modules. Le systeme de modules Nuxt est l'un "
+                "de ses points forts les plus distinctifs, avec plus de 200 modules communautaires "
+                "couvrant un large eventail de besoins. Parmi les plus populaires, on trouve "
+                "@nuxt/content pour la gestion de contenu en Markdown et YAML, @nuxt/image pour "
+                "l'optimisation automatique des images, @nuxtjs/i18n pour l'internationalisation, "
+                "@sidebase/nuxt-auth pour l'authentification, et @nuxt/ui pour une bibliotheque "
+                "de composants d'interface integree.\n\n"
+                "Cote outils de developpement, Nuxt DevTools offre une interface graphique integree "
+                "pour inspecter les composants, les routes, les modules, l'etat et les appels API "
+                "de l'application. Le framework utilise Vite comme bundler par defaut, offrant un "
+                "rechargement a chaud quasi instantane. Pour les tests, Nuxt s'integre avec Vitest "
+                "et @nuxt/test-utils pour les tests unitaires et d'integration. Pinia est le "
+                "gestionnaire d'etat recommande, remplacant Vuex. TailwindCSS et UnoCSS sont les "
+                "solutions de styling les plus populaires dans l'ecosysteme Nuxt. Pour le deploiement, "
+                "Nuxt supporte nativement de nombreuses plateformes grace aux presets Nitro : Vercel, "
+                "Netlify, Cloudflare, AWS Lambda, Azure, et bien d'autres."
+            ),
+            "companies": [
+                "GitLab",
+                "Upwork",
+                "Ecosia",
+                "Line (messagerie japonaise)",
+                "Backmarket",
+                "Lego",
+                "Rakuten",
+                "Roland Garros",
+                "Nintendo (sites web)",
+            ],
+            "code_example": (
+                "<!-- pages/index.vue -->\n"
+                "<template>\n"
+                "  <div>\n"
+                "    <h1>Liste des articles</h1>\n"
+                "    <div v-if=\"pending\">Chargement...</div>\n"
+                "    <div v-else>\n"
+                "      <article v-for=\"article in articles\" :key=\"article.id\">\n"
+                "        <NuxtLink :to=\"`/articles/${article.id}`\">\n"
+                "          <h2>{{ article.titre }}</h2>\n"
+                "        </NuxtLink>\n"
+                "        <p>{{ article.resume }}</p>\n"
+                "      </article>\n"
+                "    </div>\n"
+                "  </div>\n"
+                "</template>\n\n"
+                "<script setup lang=\"ts\">\n"
+                "interface Article {\n"
+                "  id: number;\n"
+                "  titre: string;\n"
+                "  resume: string;\n"
+                "  contenu: string;\n"
+                "}\n\n"
+                "const { data: articles, pending } = await useFetch<Article[]>('/api/articles');\n\n"
+                "useHead({\n"
+                "  title: 'Accueil - Mon Blog',\n"
+                "  meta: [\n"
+                "    { name: 'description', content: 'Decouvrez nos derniers articles' },\n"
+                "  ],\n"
+                "});\n"
+                "</script>\n\n"
+                "<!-- server/api/articles.get.ts -->\n"
+                "export default defineEventHandler(async () => {\n"
+                "  const articles = [\n"
+                "    { id: 1, titre: 'Decouvrir Nuxt 3', resume: 'Un guide complet...', contenu: '...' },\n"
+                "    { id: 2, titre: 'Le rendu hybride', resume: 'SSR, SSG et SPA...', contenu: '...' },\n"
+                "  ];\n"
+                "  return articles;\n"
+                "});"
+            ),
+            "performance": {
+                "startup_time": (
+                    "Le temps de demarrage d'une application Nuxt depend du mode de rendu choisi. "
+                    "En mode SSG, les pages pre-rendues sont servies comme du HTML statique, offrant "
+                    "des temps de chargement extremement rapides car aucun traitement serveur n'est "
+                    "necessaire. En mode SSR, le serveur Nitro genere le HTML a chaque requete, "
+                    "ajoutant une latence liee au rendu mais permettant un contenu toujours a jour. "
+                    "Le framework optimise automatiquement le code splitting par route, ne chargeant "
+                    "que le JavaScript necessaire pour la page courante."
+                ),
+                "throughput": (
+                    "Nitro, le moteur serveur de Nuxt 3, est concu pour des performances elevees "
+                    "avec un faible overhead. En mode SSG, le debit est essentiellement limite par "
+                    "le serveur de fichiers statiques ou le CDN, offrant des performances excellentes. "
+                    "En mode SSR, Nitro exploite les workers et le cache pour maximiser le nombre "
+                    "de requetes traitees par seconde. Le rendu hybride avec ISR (Incremental Static "
+                    "Regeneration) combine les avantages des deux approches en regenerant les pages "
+                    "statiques de maniere incrementale."
+                ),
+                "memory": (
+                    "La consommation memoire de Nuxt varie selon le mode de deploiement. En mode "
+                    "statique, l'empreinte cote serveur est negligeable. En mode SSR, chaque requete "
+                    "necessite la creation d'une instance Vue pour le rendu, ce qui consomme de la "
+                    "memoire. Nitro optimise cette consommation en reutilisant les ressources et en "
+                    "gerant efficacement le cycle de vie des instances. Cote client, la consommation "
+                    "est comparable a une application Vue.js classique, avec l'overhead d'hydratation "
+                    "lors du premier chargement."
+                ),
+                "concurrency_model": (
+                    "Nuxt.js repose sur le modele de concurrence de Node.js (boucle evenementielle "
+                    "asynchrone) pour le rendu cote serveur via Nitro. Les requetes sont traitees "
+                    "de maniere non bloquante, permettant a un seul processus de gerer de nombreuses "
+                    "connexions simultanees. Pour les deploiements edge, Nitro utilise les workers "
+                    "des plateformes (Cloudflare Workers, Deno Deploy) qui offrent une isolation "
+                    "et une scalabilite horizontale natives."
+                ),
+            },
+            "learning_curve": (
+                "La courbe d'apprentissage de Nuxt.js est moderee pour les developpeurs ayant "
+                "deja une experience avec Vue.js. Les conventions du framework (routage par fichiers, "
+                "auto-imports, layouts) sont intuitives et reduisent le temps de configuration "
+                "initial. Cependant, la maitrise des differents modes de rendu (SSR, SSG, SPA, "
+                "ISR) et de leurs implications sur le cycle de vie des composants, l'hydratation "
+                "et le fetching de donnees necessite un investissement significatif. La comprehension "
+                "du fonctionnement de Nitro, des composables isomorphes (useAsyncData, useFetch) et "
+                "de la distinction entre code serveur et code client est essentielle pour eviter "
+                "les erreurs courantes. Les developpeurs venant d'autres frameworks SSR comme "
+                "Next.js retrouveront des concepts familiers, facilitant la transition."
+            ),
+            "community_size": (
+                "Nuxt.js possede une communaute active et passionnee, avec plus de 55 000 etoiles "
+                "sur GitHub pour Nuxt 3. La communaute est particulierement forte en Europe et en "
+                "Asie, ou Vue.js jouit d'une grande popularite. Le serveur Discord officiel de Nuxt "
+                "rassemble des dizaines de milliers de membres actifs. NuxtNation est la conference "
+                "annuelle dediee au framework. La communaute contribue activement aux modules, "
+                "aux correctifs et a la documentation. Bien que plus petite que celle de Next.js, "
+                "la communaute Nuxt est reconnue pour sa bienveillance et son accessibilite."
+            ),
+            "job_market": (
+                "Le marche de l'emploi pour Nuxt.js est en croissance constante, suivant la "
+                "tendance d'adoption de Vue.js dans l'industrie. Les offres mentionnant Nuxt "
+                "sont particulierement frequentes en Europe (France, Allemagne, Pays-Bas), en "
+                "Asie (Japon, Chine, Coree du Sud) et dans les entreprises qui ont adopte Vue.js "
+                "comme framework frontend principal. Les postes de developpeur Nuxt sont souvent "
+                "associes a des competences fullstack, incluant la gestion du rendu serveur et "
+                "le deploiement. Les salaires sont competitifs et en hausse, refletant la demande "
+                "croissante pour des developpeurs capables de construire des applications web "
+                "performantes et bien referencees avec les techniques modernes de rendu."
+            ),
+        },
+        "traits": {
+            "performance": 7,
+            "developer_speed": 8,
+            "learning_curve": 4,
+            "ecosystem_size": 7,
+            "type_safety": 6,
+            "concurrency": 5,
+            "memory_safety": 5,
+            "scalability": 8,
+        },
+    },
 }
